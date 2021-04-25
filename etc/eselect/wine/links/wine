@@ -1,0 +1,6 @@
+# Configuration file for eselect
+# This file has been automatically generated.
+symlink_dirs="bin man include"
+bin=" /usr/bin/function_grep.pl /usr/bin/msidb /usr/bin/msiexec /usr/bin/notepad /usr/bin/regedit /usr/bin/regsvr32 /usr/bin/widl /usr/bin/wine /usr/bin/wine-preloader /usr/bin/wine64 /usr/bin/wine64-preloader /usr/bin/wineboot /usr/bin/winebuild /usr/bin/winecfg /usr/bin/wineconsole /usr/bin/winecpp /usr/bin/winedbg /usr/bin/winedump /usr/bin/winefile /usr/bin/wineg++ /usr/bin/winegcc /usr/bin/winemaker /usr/bin/winemine /usr/bin/winepath /usr/bin/wineserver /usr/bin/wmc /usr/bin/wrc"
+man="/usr/share/man/man1/msiexec.1 /usr/share/man/man1/notepad.1 /usr/share/man/man1/regedit.1 /usr/share/man/man1/regsvr32.1 /usr/share/man/man1/widl.1 /usr/share/man/man1/wine.1 /usr/share/man/man1/wine64.1 /usr/share/man/man1/wineboot.1 /usr/share/man/man1/winebuild.1 /usr/share/man/man1/winecfg.1 /usr/share/man/man1/wineconsole.1 /usr/share/man/man1/winecpp.1 /usr/share/man/man1/winedbg.1 /usr/share/man/man1/winedump.1 /usr/share/man/man1/winefile.1 /usr/share/man/man1/wineg++.1 /usr/share/man/man1/winegcc.1 /usr/share/man/man1/winemaker.1 /usr/share/man/man1/winemine.1 /usr/share/man/man1/winepath.1 /usr/share/man/man1/wineserver.1 /usr/share/man/man1/wmc.1 /usr/share/man/man1/wrc.1"
+include="/usr/include/wine"

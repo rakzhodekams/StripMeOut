@@ -7,6 +7,8 @@ include file.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}
+
 include disable-common.inc
 include disable-exec.inc
 include disable-passwdmgr.inc
@@ -19,7 +21,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -36,8 +37,11 @@ x11 none
 #private-bin bzip2,file,gzip,lrzip,lz4,lzip,xz,zstd
 private-cache
 private-dev
-private-etc alternatives,localtime,magic,magic.mgc
-private-lib file,libarchive.so.*,libfakeroot,libmagic.so.*
+#private-etc alternatives,localtime,magic,magic.mgc
+#private-lib file,libarchive.so.*,libfakeroot,libmagic.so.*,libseccomp.so.*
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute
 read-only ${HOME}

@@ -16,6 +16,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-xdg.inc
 
 mkdir ${HOME}/.cache/0ad
 mkdir ${HOME}/.config/0ad
@@ -24,13 +25,13 @@ whitelist ${HOME}/.cache/0ad
 whitelist ${HOME}/.config/0ad
 whitelist ${HOME}/.local/share/0ad
 whitelist /usr/share/0ad
+whitelist /usr/share/games
 include whitelist-common.inc
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
 caps.drop all
 netfilter
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -40,11 +41,15 @@ nou2f
 novideo
 protocol unix,inet,inet6
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 
 disable-mnt
 private-bin 0ad,pyrogenesis,sh,which
+private-cache
 private-dev
 private-tmp
 
+dbus-user none
+dbus-system none

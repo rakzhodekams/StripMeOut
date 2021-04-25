@@ -7,13 +7,21 @@ include pngquant.local
 # Persistent global definitions
 include globals.local
 
+noblacklist ${PICTURES}
+
+blacklist ${RUNUSER}/wayland-*
+
 include disable-common.inc
 include disable-devel.inc
 include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
+include disable-xdg.inc
 
+include whitelist-runuser-common.inc
+include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
 apparmor
@@ -22,7 +30,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -43,5 +50,8 @@ private-cache
 private-dev
 private-etc alternatives
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

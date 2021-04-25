@@ -16,9 +16,11 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all
@@ -28,8 +30,6 @@ ipc-namespace
 #net none
 netfilter
 no3d
-# nodbus - breaks preferences, comment (or put 'ignore nodbus' in your oceanaudio.local) when needed
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -47,5 +47,9 @@ private-cache
 private-dev
 private-etc alternatives,asound.conf,fonts,ld.so.cache,pulse
 private-tmp
+
+# breaks preferences
+# dbus-user none
+# dbus-system none
 
 #memory-deny-write-execute - breaks on Arch (see issue #1803)

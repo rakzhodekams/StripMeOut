@@ -6,6 +6,7 @@ include gnome-chess.local
 # Persistent global definitions
 include globals.local
 
+noblacklist ${HOME}/.config/gnome-chess
 noblacklist ${HOME}/.local/share/gnome-chess
 
 include disable-common.inc
@@ -14,8 +15,17 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
+#mkdir ${HOME}/.local/share/gnome-chess
+#whitelist ${HOME}/.local/share/gnome-chess
+#include whitelist-common.inc
+
+whitelist /usr/share/gnuchess
+whitelist /usr/share/gnome-chess
+include whitelist-runuser-common.inc
+include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
 apparmor

@@ -11,19 +11,24 @@ noblacklist ${HOME}/.local/share/ghostwriter
 noblacklist ${DOCUMENTS}
 noblacklist ${PICTURES}
 
+include allow-lua.inc
+
 include disable-common.inc
 include disable-devel.inc
 include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
-#whitelist /usr/share/ghostwriter
-#whitelist /usr/share/mozilla-dicts
-#whitelist /usr/share/texlive
-#whitelist /usr/share/pandoc*
-#include whitelist-usr-share-common.inc
+whitelist /usr/share/ghostwriter
+whitelist /usr/share/mozilla-dicts
+whitelist /usr/share/texlive
+whitelist /usr/share/pandoc*
+include whitelist-runuser-common.inc
+include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all
@@ -39,6 +44,7 @@ nou2f
 novideo
 protocol unix,inet,inet6,netlink
 seccomp !chroot
+seccomp.block-secondary
 shell none
 #tracelog -- breaks
 
@@ -48,3 +54,6 @@ private-dev
 # passwd,login.defs,firejail are a temporary workaround for #2877 and can be removed once it is fixed
 private-etc alternatives,ca-certificates,crypto-policies,dbus-1,dconf,firejail,fonts,gconf,groups,gtk-2.0,gtk-3.0,host.conf,hostname,hosts,ld.so.cache,ld.so.conf,ld.so.conf.d,ld.so.preload,locale,locale.alias,locale.conf,localtime,login.defs,machine-id,mime.types,nsswitch.conf,pango,passwd,pki,protocols,resolv.conf,rpc,services,ssl,texlive,Trolltech.conf,X11,xdg
 private-tmp
+
+dbus-user none
+dbus-system none

@@ -10,6 +10,7 @@ noblacklist /sbin
 noblacklist /usr/sbin
 
 blacklist /tmp/.X11-unix
+blacklist ${RUNUSER}/wayland-*
 
 include disable-common.inc
 include disable-devel.inc
@@ -29,7 +30,6 @@ ipc-namespace
 machine-id
 netfilter
 no3d
-nodbus
 nodvd
 nonewprivs
 nosound
@@ -44,6 +44,9 @@ private
 private-dev
 private-tmp
 writable-var
+
+dbus-user none
+dbus-system none
 
 # mdwe can break modules/plugins
 memory-deny-write-execute

@@ -19,7 +19,6 @@ include disable-programs.inc
 
 caps.drop all
 net none
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -29,7 +28,11 @@ nou2f
 protocol unix
 seccomp
 shell none
+tracelog
 
 #private-bin melt,nice,qmelt,shotcut
 private-cache
 private-dev
+
+dbus-user none
+dbus-system none

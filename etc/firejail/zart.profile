@@ -15,12 +15,12 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 caps.drop all
 ipc-namespace
 net none
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -34,3 +34,5 @@ shell none
 private-bin ffmpeg,ffplay,ffprobe,melt,zart
 private-dev
 
+dbus-user none
+dbus-system none

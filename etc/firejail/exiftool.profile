@@ -6,6 +6,8 @@ include exiftool.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 # Allow perl (blacklisted by disable-interpreters.inc)
 include allow-perl.inc
 
@@ -16,8 +18,9 @@ include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
 
-whitelist /usr/share/perl5
+whitelist /usr/share/perl-image-exiftool
 include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all
@@ -25,7 +28,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -47,5 +49,8 @@ private-cache
 private-dev
 private-etc alternatives
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

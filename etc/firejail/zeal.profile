@@ -1,5 +1,5 @@
 # Firejail profile for zeal
-# Description: Offline documentation browser
+# Description: Offline API documentation browser
 # This file is overwritten after every install/update
 # Persistent local customizations
 include zeal.local
@@ -16,13 +16,15 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
-mkdir ${HOME}/.config/Zeal
 mkdir ${HOME}/.cache/Zeal
+mkdir ${HOME}/.config/qt5ct
+mkdir ${HOME}/.config/Zeal
 mkdir ${HOME}/.local/share/Zeal
-whitelist ${HOME}/.config/Zeal
 whitelist ${HOME}/.cache/Zeal
+whitelist ${HOME}/.config/Zeal
 whitelist ${HOME}/.local/share/Zeal
 include whitelist-common.inc
 include whitelist-var-common.inc
@@ -32,7 +34,6 @@ caps.drop all
 machine-id
 netfilter
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -41,7 +42,7 @@ nosound
 notv
 nou2f
 novideo
-protocol unix,inet,inet6
+protocol unix,inet,inet6,netlink
 seccomp
 shell none
 tracelog
@@ -53,4 +54,7 @@ private-dev
 private-etc alternatives,ca-certificates,crypto-policies,fonts,host.conf,hostname,hosts,ld.so.cache,ld.so.conf,ld.so.conf.d,ld.so.preload,locale,locale.alias,locale.conf,localtime,mime.types,nsswitch.conf,pango,pki,protocols,resolv.conf,rpc,services,ssl,Trolltech.conf,X11,xdg
 private-tmp
 
-memory-deny-write-execute
+dbus-user none
+dbus-system none
+
+# memory-deny-write-execute - breaks on Arch

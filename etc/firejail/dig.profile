@@ -8,6 +8,10 @@ include dig.local
 include globals.local
 
 noblacklist ${HOME}/.digrc
+noblacklist ${PATH}/dig
+
+blacklist /tmp/.X11-unix
+blacklist ${RUNUSER}
 
 include disable-common.inc
 # include disable-devel.inc
@@ -23,12 +27,12 @@ include whitelist-common.inc
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
+apparmor
 caps.drop all
-# ipc-namespace
+ipc-namespace
 machine-id
 netfilter
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -40,14 +44,16 @@ novideo
 protocol unix,inet,inet6
 seccomp
 shell none
+tracelog
 
 disable-mnt
-private
 private-bin bash,dig,sh
-private-cache
 private-dev
 # Uncomment the next line (or put 'private-lib' in your dig.local) on non Debian/Ubuntu OS (see issue #3038)
 #private-lib
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

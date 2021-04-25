@@ -6,11 +6,12 @@ include ncdu.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 include disable-exec.inc
 
 caps.drop all
 ipc-namespace
-nodbus
 net none
 no3d
 nodvd
@@ -28,5 +29,8 @@ x11 none
 
 private-dev
 # private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

@@ -7,12 +7,15 @@ include unf.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 include disable-common.inc
 include disable-devel.inc
 include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 whitelist ${DOWNLOADS}
@@ -27,7 +30,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -48,7 +50,10 @@ private-cache
 ?HAS_APPIMAGE: ignore private-dev
 private-dev
 private-etc alternatives
-private-lib libgcc_s.so.*
+private-lib gcc/*/*/libgcc_s.so.*
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

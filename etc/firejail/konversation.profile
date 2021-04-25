@@ -7,8 +7,10 @@ include konversation.local
 include globals.local
 
 noblacklist ${HOME}/.config/konversationrc
+noblacklist ${HOME}/.config/konversation.notifyrc
 noblacklist ${HOME}/.kde/share/config/konversationrc
 noblacklist ${HOME}/.kde4/share/config/konversationrc
+noblacklist ${HOME}/.local/share/kxmlgui5/konversation
 
 include disable-common.inc
 include disable-devel.inc
@@ -16,6 +18,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 include whitelist-var-common.inc

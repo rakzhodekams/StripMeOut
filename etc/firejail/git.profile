@@ -20,6 +20,7 @@ noblacklist ${HOME}/.vim
 noblacklist ${HOME}/.viminfo
 
 blacklist /tmp/.X11-unix
+blacklist ${RUNUSER}/wayland-*
 
 include disable-common.inc
 include disable-exec.inc
@@ -32,6 +33,7 @@ whitelist /usr/share/gitgui
 whitelist /usr/share/gitweb
 whitelist /usr/share/nano
 include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all

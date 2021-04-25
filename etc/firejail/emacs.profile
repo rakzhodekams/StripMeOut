@@ -29,3 +29,6 @@ notv
 novideo
 protocol unix,inet,inet6
 seccomp
+
+read-write ${HOME}/.emacs
+read-write ${HOME}/.emacs.d

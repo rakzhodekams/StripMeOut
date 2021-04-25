@@ -18,6 +18,7 @@ blacklist-nolog ${HOME}/.kde4/share/apps/klipper
 blacklist-nolog ${HOME}/.local/share/fish/fish_history
 blacklist-nolog ${HOME}/.local/share/klipper
 blacklist-nolog ${HOME}/.macromedia
+blacklist-nolog ${HOME}/.mupdf.history
 blacklist-nolog ${HOME}/.python-history
 blacklist-nolog ${HOME}/.python_history
 blacklist-nolog ${HOME}/.pythonhist
@@ -63,10 +64,12 @@ blacklist /etc/xdg/autostart
 read-only ${HOME}/.Xauthority
 
 # Session manager
-?HAS_X11: blacklist ${HOME}/.ICEauthority
-?HAS_X11: blacklist /tmp/.ICE-unix
+# see #3358
+#?HAS_X11: blacklist ${HOME}/.ICEauthority
+#?HAS_X11: blacklist /tmp/.ICE-unix
 
 # KDE config
+blacklist ${HOME}/.cache/konsole
 blacklist ${HOME}/.config/khotkeysrc
 blacklist ${HOME}/.config/krunnerrc
 blacklist ${HOME}/.config/kscreenlockerrc
@@ -74,6 +77,7 @@ blacklist ${HOME}/.config/ksslcertificatemanager
 blacklist ${HOME}/.config/kwalletrc
 blacklist ${HOME}/.config/kwinrc
 blacklist ${HOME}/.config/kwinrulesrc
+blacklist ${HOME}/.config/plasma-locale-settings.sh
 blacklist ${HOME}/.config/plasma-org.kde.plasma.desktop-appletsrc
 blacklist ${HOME}/.config/plasmashellrc
 blacklist ${HOME}/.config/plasmavaultrc
@@ -104,6 +108,7 @@ blacklist ${HOME}/.local/share/kwin
 blacklist ${HOME}/.local/share/plasma
 blacklist ${HOME}/.local/share/plasmashell
 blacklist ${HOME}/.local/share/solid
+blacklist /tmp/konsole-*.history
 read-only ${HOME}/.cache/ksycoca5_*
 read-only ${HOME}/.config/*notifyrc
 read-only ${HOME}/.config/kdeglobals
@@ -135,21 +140,34 @@ read-only ${HOME}/.local/share/kssl
 blacklist ${RUNUSER}/*.slave-socket
 blacklist ${RUNUSER}/kdeinit5__*
 blacklist ${RUNUSER}/kdesud_*
-?HAS_NODBUS: blacklist ${RUNUSER}/ksocket-*
-?HAS_NODBUS: blacklist /tmp/ksocket-*
+# see #3358
+#?HAS_NODBUS: blacklist ${RUNUSER}/ksocket-*
+#?HAS_NODBUS: blacklist /tmp/ksocket-*
 
 # gnome
 # contains extensions, last used times of applications, and notifications
 blacklist ${HOME}/.local/share/gnome-shell
+# contains recently used files and serials of static/removable storage
+blacklist ${HOME}/.local/share/gvfs-metadata
 # no direct modification of dconf database
 read-only ${HOME}/.config/dconf
+blacklist ${RUNUSER}/gnome-session-leader-fifo
+blacklist ${RUNUSER}/gnome-shell
+blacklist ${RUNUSER}/gsconnect
 
 # systemd
 blacklist ${HOME}/.config/systemd
 blacklist ${HOME}/.local/share/systemd
 blacklist /var/lib/systemd
-# blacklist /var/run/systemd
+blacklist ${PATH}/systemd-run
+blacklist ${RUNUSER}/systemd
 # creates problems on Arch where /etc/resolv.conf is a symlink to /var/run/systemd/resolve/resolv.conf
+#blacklist /var/run/systemd
+
+# openrc
+blacklist /etc/runlevels/
+blacklist /etc/init.d/
+blacklist /etc/rc.conf
 
 # VirtualBox
 blacklist ${HOME}/.VirtualBox
@@ -159,6 +177,21 @@ blacklist ${HOME}/VirtualBox VMs
 # GNOME Boxes
 blacklist ${HOME}/.config/gnome-boxes
 blacklist ${HOME}/.local/share/gnome-boxes
+
+# libvirt
+blacklist ${HOME}/.cache/libvirt
+blacklist ${HOME}/.config/libvirt
+blacklist ${RUNUSER}/libvirt
+blacklist /var/cache/libvirt
+blacklist /var/lib/libvirt
+blacklist /var/log/libvirt
+
+# OCI-Containers / Podman
+blacklist ${RUNUSER}/containers
+blacklist ${RUNUSER}/crun
+blacklist ${RUNUSER}/libpod
+blacklist ${RUNUSER}/runc
+blacklist ${RUNUSER}/toolbox
 
 # VeraCrypt
 blacklist ${HOME}/.VeraCrypt
@@ -193,7 +226,7 @@ blacklist /var/lib/mysqld/mysql.sock
 blacklist /var/lib/pacman
 blacklist /var/lib/upower
 # blacklist /var/log - a virtual /var/log directory (mostly empty) is build up by default for
-# every sandbox, unless --writeble-var-log switch is activated
+# every sandbox, unless --writable-var-log switch is activated
 blacklist /var/mail
 blacklist /var/opt
 blacklist /var/run/acpid.socket
@@ -230,13 +263,16 @@ read-only ${HOME}/.bash_login
 read-only ${HOME}/.bash_logout
 read-only ${HOME}/.bash_profile
 read-only ${HOME}/.bashrc
+read-only ${HOME}/.config/environment.d
 read-only ${HOME}/.config/fish
 read-only ${HOME}/.csh_files
 read-only ${HOME}/.cshrc
 read-only ${HOME}/.forward
+read-only ${HOME}/.kshrc
 read-only ${HOME}/.local/share/fish
 read-only ${HOME}/.login
 read-only ${HOME}/.logout
+read-only ${HOME}/.mkshrc
 read-only ${HOME}/.oh-my-zsh
 read-only ${HOME}/.pam_environment
 read-only ${HOME}/.pgpkey
@@ -244,6 +280,7 @@ read-only ${HOME}/.plan
 read-only ${HOME}/.profile
 read-only ${HOME}/.project
 read-only ${HOME}/.tcshrc
+read-only ${HOME}/.zfunc
 read-only ${HOME}/.zlogin
 read-only ${HOME}/.zlogout
 read-only ${HOME}/.zprofile
@@ -266,12 +303,14 @@ read-only ${HOME}/.exrc
 read-only ${HOME}/.gvimrc
 read-only ${HOME}/.homesick
 read-only ${HOME}/.iscreenrc
+read-only ${HOME}/.local/lib
 read-only ${HOME}/.local/share/cool-retro-term
 read-only ${HOME}/.mailcap
 read-only ${HOME}/.msmtprc
 read-only ${HOME}/.mutt/muttrc
 read-only ${HOME}/.muttrc
 read-only ${HOME}/.nano
+read-only ${HOME}/.npmrc
 read-only ${HOME}/.pythonrc.py
 read-only ${HOME}/.reportbugrc
 read-only ${HOME}/.tmux.conf
@@ -280,6 +319,7 @@ read-only ${HOME}/.viminfo
 read-only ${HOME}/.vimrc
 read-only ${HOME}/.xmonad
 read-only ${HOME}/.xscreensaver
+read-only ${HOME}/.yarnrc
 read-only ${HOME}/_exrc
 read-only ${HOME}/_gvimrc
 read-only ${HOME}/_vimrc
@@ -293,12 +333,16 @@ read-only ${HOME}/bin
 read-only ${HOME}/.bin
 read-only ${HOME}/.local/bin
 read-only ${HOME}/.cargo/bin
-read-only ${HOME}/.cargo/env
 
 # Write-protection for desktop entries
 read-only ${HOME}/.config/menus
 read-only ${HOME}/.gnome/apps
 read-only ${HOME}/.local/share/applications
+
+read-only ${HOME}/.config/mimeapps.list
+read-only ${HOME}/.config/user-dirs.dirs
+read-only ${HOME}/.config/user-dirs.locale
+read-only ${HOME}/.local/share/mime
 
 # Write-protection for thumbnailer dir
 read-only ${HOME}/.local/share/thumbnailers
@@ -369,6 +413,7 @@ blacklist /usr/sbin
 
 # system management
 blacklist ${PATH}/at
+blacklist ${PATH}/busybox
 blacklist ${PATH}/chage
 blacklist ${PATH}/chfn
 blacklist ${PATH}/chsh
@@ -436,13 +481,26 @@ blacklist /vmlinuz*
 blacklist /.snapshots
 
 # flatpak
+blacklist ${HOME}/.cache/flatpak
 blacklist ${HOME}/.config/flatpak
-blacklist ${HOME}/.local/share/flatpak
+noblacklist ${HOME}/.local/share/flatpak/exports
+read-only ${HOME}/.local/share/flatpak/exports
+blacklist ${HOME}/.local/share/flatpak/*
 blacklist ${HOME}/.var
+blacklist ${RUNUSER}/app
+blacklist ${RUNUSER}/doc
+blacklist ${RUNUSER}/.dbus-proxy
+blacklist ${RUNUSER}/.flatpak
+blacklist ${RUNUSER}/.flatpak-cache
+blacklist ${RUNUSER}/.flatpak-helper
 blacklist /usr/share/flatpak
-blacklist /var/lib/flatpak
+noblacklist /var/lib/flatpak/exports
+blacklist /var/lib/flatpak/*
 # most of the time bwrap is SUID binary
 blacklist ${PATH}/bwrap
+
+# snap
+blacklist ${RUNUSER}/snapd-session-agent.socket
 
 # mail directories used by mutt
 blacklist ${HOME}/.Mail
@@ -455,3 +513,28 @@ blacklist ${HOME}/sent
 
 # kernel configuration
 blacklist /proc/config.gz
+
+# prevent DNS malware attempting to communicate with the server
+# using regular DNS tools
+blacklist ${PATH}/dig
+blacklist ${PATH}/dlint
+blacklist ${PATH}/dns2tcp
+blacklist ${PATH}/dnssec-*
+blacklist ${PATH}/dnswalk
+blacklist ${PATH}/drill
+blacklist ${PATH}/host
+blacklist ${PATH}/iodine
+blacklist ${PATH}/kdig
+blacklist ${PATH}/khost
+blacklist ${PATH}/knsupdate
+blacklist ${PATH}/ldns-*
+blacklist ${PATH}/ldnsd
+blacklist ${PATH}/nslookup
+blacklist ${PATH}/resolvectl
+blacklist ${PATH}/unbound-host
+
+# rest of ${RUNUSER}
+blacklist ${RUNUSER}/*.lock
+blacklist ${RUNUSER}/inaccessible
+blacklist ${RUNUSER}/pk-debconf-socket
+blacklist ${RUNUSER}/update-notifier.pid

@@ -12,11 +12,14 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 whitelist ${HOME}/.local/share/glib-2.0
 include whitelist-common.inc
+include whitelist-runuser-common.inc
 include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all
@@ -32,6 +35,7 @@ nou2f
 novideo
 protocol unix
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 
@@ -42,3 +46,8 @@ private-dev
 private-etc alternatives,dconf,fonts,gtk-3.0,machine-id
 private-lib
 private-tmp
+
+dbus-user filter
+dbus-user.own ca.desrt.dconf-editor
+dbus-user.talk ca.desrt.dconf
+dbus-system none

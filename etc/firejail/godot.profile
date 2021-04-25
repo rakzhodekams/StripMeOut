@@ -22,7 +22,6 @@ include whitelist-var-common.inc
 
 caps.drop all
 netfilter
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -39,5 +38,8 @@ tracelog
 # private-bin godot
 private-cache
 private-dev
-private-etc alsa,alternatives,asound.conf,ca-certificates,crypto-policies,drirc,fonts,machine-id,nsswitch.conf,openal,pki,pulse,resolv.conf,ssl
+private-etc alsa,alternatives,asound.conf,ca-certificates,crypto-policies,drirc,fonts,machine-id,mono,nsswitch.conf,openal,pki,pulse,resolv.conf,ssl
 private-tmp
+
+dbus-user none
+dbus-system none

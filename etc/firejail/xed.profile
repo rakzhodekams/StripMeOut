@@ -11,8 +11,8 @@ noblacklist ${HOME}/.python_history
 noblacklist ${HOME}/.pythonhist
 
 # Allow python (blacklisted by disable-interpreters.inc)
-include	allow-python2.inc
-include	allow-python3.inc
+include allow-python2.inc
+include allow-python3.inc
 
 include disable-common.inc
 include disable-devel.inc
@@ -20,6 +20,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 
 include whitelist-var-common.inc
 
@@ -28,7 +29,6 @@ caps.drop all
 machine-id
 # net none - makes settings immutable
 no3d
-# nodbus - makes settings immutable
 nodvd
 nogroups
 nonewprivs
@@ -45,6 +45,10 @@ tracelog
 private-bin xed
 private-dev
 private-tmp
+
+# makes settings immutable
+# dbus-user none
+# dbus-system none
 
 # xed uses python plugins, memory-deny-write-execute breaks python
 # memory-deny-write-execute

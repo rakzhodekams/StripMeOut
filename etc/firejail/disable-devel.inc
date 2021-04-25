@@ -26,7 +26,6 @@ blacklist ${PATH}/*-gcc*
 blacklist ${PATH}/*-g++*
 blacklist ${PATH}/*-gcc*
 blacklist ${PATH}/*-g++*
-blacklist /usr/include
 # seems to create problems on Gentoo
 #blacklist /usr/lib/gcc
 
@@ -50,6 +49,7 @@ blacklist ${PATH}/openssl-1.0
 blacklist ${PATH}/rust-gdb
 blacklist ${PATH}/rust-lldb
 blacklist ${PATH}/rustc
+blacklist ${HOME}/.rustup
 
 # tcc - Tiny C Compiler
 blacklist ${PATH}/tcc
@@ -59,3 +59,11 @@ blacklist /usr/lib/tcc
 # Valgrind
 blacklist ${PATH}/valgrind*
 blacklist /usr/lib/valgrind
+
+
+# Source-Code
+
+blacklist /usr/src
+blacklist /usr/local/src
+blacklist /usr/include
+blacklist /usr/local/include

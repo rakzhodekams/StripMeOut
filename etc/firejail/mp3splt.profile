@@ -6,6 +6,8 @@ include mp3splt.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 noblacklist ${MUSIC}
 
 include disable-common.inc
@@ -24,7 +26,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -47,3 +48,6 @@ private-etc alternatives
 private-tmp
 
 memory-deny-write-execute
+
+dbus-user none
+dbus-system none

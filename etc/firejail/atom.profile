@@ -6,33 +6,26 @@ include atom.local
 # Persistent global definitions
 include globals.local
 
+# Disabled until someone reported positive feedback
+ignore include disable-devel.inc
+ignore include disable-interpreters.inc
+ignore include disable-xdg.inc
+ignore whitelist ${DOWNLOADS}
+ignore include whitelist-common.inc
+ignore include whitelist-runuser-common.inc
+ignore include whitelist-usr-share-common.inc
+ignore include whitelist-var-common.inc
+ignore apparmor
+ignore disable-mnt
+
 noblacklist ${HOME}/.atom
 noblacklist ${HOME}/.config/Atom
 
 # Allows files commonly used by IDEs
 include allow-common-devel.inc
 
-include disable-common.inc
-include disable-exec.inc
-include disable-passwdmgr.inc
-include disable-programs.inc
-
-caps.drop all
 # net none
-netfilter
-nodbus
-nodvd
-nogroups
-nonewprivs
-noroot
 nosound
-notv
-nou2f
-novideo
-protocol unix,inet,inet6,netlink
-seccomp
-shell none
 
-private-cache
-private-dev
-private-tmp
+# Redirect
+include electron.profile

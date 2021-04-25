@@ -6,6 +6,8 @@ include devilspie.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 noblacklist ${HOME}/.devilspie
 
 include disable-common.inc
@@ -28,7 +30,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -41,6 +42,7 @@ protocol unix
 seccomp
 shell none
 tracelog
+x11 none
 
 disable-mnt
 private-bin devilspie
@@ -50,6 +52,8 @@ private-etc alternatives
 private-lib gconv
 private-tmp
 
-memory-deny-write-execute
+dbus-user none
+dbus-system none
 
+memory-deny-write-execute
 read-only ${HOME}

@@ -6,6 +6,8 @@ include polari.local
 # Persistent global definitions
 include globals.local
 
+# Allow gjs (blacklisted by disable-interpreters.inc)
+include allow-gjs.inc
 
 include disable-common.inc
 include disable-devel.inc
@@ -26,6 +28,7 @@ whitelist ${HOME}/.local/share/TpLogger
 whitelist ${HOME}/.local/share/telepathy
 whitelist ${HOME}/.purple
 include whitelist-common.inc
+include whitelist-runuser-common.inc
 
 caps.drop all
 netfilter

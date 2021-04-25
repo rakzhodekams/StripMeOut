@@ -7,13 +7,14 @@ include clamav.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 include disable-exec.inc
 
 caps.drop all
 ipc-namespace
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -29,6 +30,10 @@ tracelog
 x11 none
 
 private-dev
+
+dbus-user none
+dbus-system none
+
 read-only ${HOME}
 
 memory-deny-write-execute

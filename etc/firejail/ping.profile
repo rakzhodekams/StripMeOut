@@ -7,6 +7,9 @@ include ping.local
 # Persistent global definitions
 include globals.local
 
+blacklist /tmp/.X11-unix
+blacklist ${RUNUSER}
+
 include disable-common.inc
 include disable-devel.inc
 include disable-exec.inc
@@ -15,9 +18,11 @@ include disable-passwdmgr.inc
 include disable-programs.inc
 include disable-xdg.inc
 
-include whitelist-usr-share-common.inc
 include whitelist-common.inc
+include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
+apparmor
 caps.keep net_raw
 ipc-namespace
 #net tun0
@@ -48,3 +53,6 @@ private-tmp
 
 # memory-deny-write-execute is built using seccomp; nonewprivs will kill it
 #memory-deny-write-execute
+
+dbus-user none
+dbus-system none

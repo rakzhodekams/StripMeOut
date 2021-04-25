@@ -7,6 +7,8 @@ include less.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}
+
 noblacklist ${HOME}/.lesshst
 
 include disable-devel.inc
@@ -20,7 +22,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nonewprivs
 #noroot
@@ -41,6 +42,9 @@ x11 none
 private-cache
 private-dev
 writable-var-log
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute
 read-only ${HOME}

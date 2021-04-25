@@ -18,6 +18,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.config/meteo-qt
@@ -28,7 +29,6 @@ include whitelist-var-common.inc
 
 caps.drop all
 netfilter
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -47,5 +47,8 @@ private-bin meteo-qt,python*
 private-cache
 private-dev
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

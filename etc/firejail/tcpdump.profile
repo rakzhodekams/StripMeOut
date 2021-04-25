@@ -19,6 +19,7 @@ include disable-xdg.inc
 
 include whitelist-common.inc
 
+apparmor
 caps.keep net_raw
 ipc-namespace
 #net tun0
@@ -32,7 +33,7 @@ nosound
 notv
 nou2f
 novideo
-protocol unix,inet,inet6,netlink,packet
+protocol unix,inet,inet6,netlink,packet,bluetooth
 seccomp
 
 disable-mnt

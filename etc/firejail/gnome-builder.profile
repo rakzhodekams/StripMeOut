@@ -6,6 +6,8 @@ include gnome-builder.local
 # Persistent global definitions
 include globals.local
 
+noblacklist ${HOME}/.bash_history
+
 noblacklist ${HOME}/.cache/gnome-builder
 noblacklist ${HOME}/.config/gnome-builder
 noblacklist ${HOME}/.local/share/gnome-builder
@@ -16,6 +18,8 @@ include allow-common-devel.inc
 include disable-common.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+
+include whitelist-runuser-common.inc
 
 caps.drop all
 ipc-namespace
@@ -31,5 +35,6 @@ protocol unix,inet,inet6
 seccomp
 shell none
 
-private-cache
 private-dev
+
+read-write ${HOME}/.bash_history

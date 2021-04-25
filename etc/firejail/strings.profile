@@ -7,12 +7,15 @@ include strings.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}
+
 #include disable-common.inc
 include disable-devel.inc
 include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 #include disable-programs.inc
+include disable-shell.inc
 #include disable-xdg.inc
 
 #include whitelist-usr-share-common.inc
@@ -24,7 +27,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -35,6 +37,7 @@ nou2f
 novideo
 protocol unix
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 x11 none
@@ -46,6 +49,9 @@ private-dev
 #private-etc alternatives
 #private-lib libfakeroot
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute
 read-only ${HOME}

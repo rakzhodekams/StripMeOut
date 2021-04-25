@@ -7,6 +7,8 @@ include shellcheck.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}
+
 noblacklist ${DOCUMENTS}
 
 include disable-common.inc
@@ -21,12 +23,12 @@ whitelist /usr/share/shellcheck
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
+apparmor
 caps.drop all
 ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -37,6 +39,7 @@ nou2f
 novideo
 protocol unix
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 x11 none
@@ -44,5 +47,8 @@ x11 none
 private-cache
 private-dev
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

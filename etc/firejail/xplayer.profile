@@ -7,12 +7,10 @@ include globals.local
 
 noblacklist ${HOME}/.config/xplayer
 noblacklist ${HOME}/.local/share/xplayer
-noblacklist ${MUSIC}
-noblacklist ${VIDEOS}
 
 # Allow python (blacklisted by disable-interpreters.inc)
-include	allow-python2.inc
-include	allow-python3.inc
+include allow-python2.inc
+include allow-python3.inc
 
 include disable-common.inc
 include disable-devel.inc
@@ -20,14 +18,19 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
-include disable-xdg.inc
 
+read-only ${DESKTOP}
+mkdir ${HOME}/.config/xplayer
+mkdir ${HOME}/.local/share/xplayer
+whitelist ${HOME}/.config/xplayer
+whitelist ${HOME}/.local/share/xplayer
+include whitelist-common.inc
+include whitelist-player-common.inc
 include whitelist-var-common.inc
 
 # apparmor - makes settings immutable
 caps.drop all
 netfilter
-# nodbus - makes settings immutable
 nogroups
 nonewprivs
 noroot
@@ -42,3 +45,6 @@ private-dev
 # private-etc alternatives,asound.conf,ca-certificates,crypto-policies,fonts,machine-id,pki,pulse,ssl
 private-tmp
 
+# makes settings immutable
+# dbus-user none
+# dbus-system none

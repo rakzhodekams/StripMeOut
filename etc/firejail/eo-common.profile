@@ -17,7 +17,9 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-write-mnt.inc
 
+include whitelist-runuser-common.inc
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
@@ -25,6 +27,7 @@ apparmor
 caps.drop all
 ipc-namespace
 machine-id
+net none
 no3d
 nodvd
 nogroups
@@ -36,6 +39,7 @@ nou2f
 novideo
 protocol unix,netlink
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 

@@ -14,17 +14,20 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.tremulous
 whitelist ${HOME}/.tremulous
+whitelist /usr/share/tremulous
 include whitelist-common.inc
+include whitelist-runuser-common.inc
+include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
 caps.drop all
 ipc-namespace
 netfilter
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -42,3 +45,6 @@ private-bin tremded,tremulous,tremulous-wrapper
 private-cache
 private-dev
 private-tmp
+
+dbus-user none
+dbus-system none

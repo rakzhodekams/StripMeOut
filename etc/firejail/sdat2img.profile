@@ -16,6 +16,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 include whitelist-var-common.inc
@@ -23,7 +24,6 @@ include whitelist-var-common.inc
 caps.drop all
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -40,3 +40,5 @@ private-bin env,python*,sdat2img
 private-cache
 private-dev
 
+dbus-user none
+dbus-system none

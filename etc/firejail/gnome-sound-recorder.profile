@@ -7,8 +7,10 @@ include gnome-sound-recorder.local
 include globals.local
 
 noblacklist ${MUSIC}
-noblacklist ${HOME}/.local/share/flatpak
 noblacklist ${HOME}/.local/share/Trash
+
+# Allow gjs (blacklisted by disable-interpreters.inc)
+include allow-gjs.inc
 
 include disable-common.inc
 include disable-devel.inc
@@ -31,6 +33,7 @@ nou2f
 novideo
 protocol unix
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 

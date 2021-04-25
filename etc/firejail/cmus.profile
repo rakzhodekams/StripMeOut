@@ -14,6 +14,7 @@ include disable-devel.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 caps.drop all
@@ -27,4 +28,4 @@ seccomp
 shell none
 
 private-bin cmus
-private-etc alternatives,asound.conf,ca-certificates,crypto-policies,group,machine-id,pki,pulse,ssl
+private-etc alternatives,asound.conf,ca-certificates,crypto-policies,group,machine-id,pki,pulse,resolv.conf,ssl

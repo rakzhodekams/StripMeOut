@@ -14,12 +14,12 @@ include disable-devel.inc
 include disable-exec.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 caps.drop all
 netfilter
 # no3d
-nodbus
 nogroups
 nonewprivs
 noroot
@@ -35,3 +35,5 @@ private-bin bzip2,gzip,qmmp,tar,unzip
 private-dev
 private-tmp
 
+dbus-user none
+dbus-system none

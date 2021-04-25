@@ -43,7 +43,11 @@ shell none
 # comment tracelog when using the ubuntu 18.04/debian 10 apparmor profile
 tracelog
 
+#private-bin libreoffice,sh,uname,dirname,grep,sed,basename,ls
+private-cache
 private-dev
 private-tmp
+
+dbus-system none
 
 join-or-start libreoffice

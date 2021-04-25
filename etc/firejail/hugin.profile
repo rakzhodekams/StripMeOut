@@ -16,11 +16,11 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 caps.drop all
 net none
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -38,3 +38,5 @@ private-cache
 private-dev
 private-tmp
 
+dbus-user none
+dbus-system none

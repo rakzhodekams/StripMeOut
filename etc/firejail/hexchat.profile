@@ -7,11 +7,13 @@ include hexchat.local
 include globals.local
 
 noblacklist ${HOME}/.config/hexchat
-noblacklist /usr/share/perl*
 
 # Allow python (blacklisted by disable-interpreters.inc)
 include allow-python2.inc
 include allow-python3.inc
+
+# Allow perl (blacklisted by disable-interpreters.inc)
+include allow-perl.inc
 
 include disable-common.inc
 include disable-devel.inc
@@ -19,6 +21,8 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
+include disable-xdg.inc
 
 mkdir ${HOME}/.config/hexchat
 whitelist ${HOME}/.config/hexchat
@@ -26,14 +30,13 @@ include whitelist-common.inc
 include whitelist-var-common.inc
 
 caps.drop all
-machine-id
+#machine-id -- breaks sound
 netfilter
 no3d
 nodvd
 nogroups
 nonewprivs
 noroot
-nosound
 notv
 nou2f
 novideo

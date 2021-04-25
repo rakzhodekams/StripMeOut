@@ -1,1 +1,1 @@
-mail-client/neomutt notmuch gpgme smime-classic
+mail-client/neomutt gpgme pgp-classic smime-classic sasl notmuch lmdb

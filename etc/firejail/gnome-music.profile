@@ -21,8 +21,10 @@ include disable-passwdmgr.inc
 include disable-programs.inc
 include disable-xdg.inc
 
+include whitelist-runuser-common.inc
 include whitelist-var-common.inc
 
+apparmor
 caps.drop all
 netfilter
 no3d
@@ -37,8 +39,9 @@ seccomp
 shell none
 tracelog
 
-private-bin env,gio-launch-desktop,gnome-music,python*,yelp
+# private-bin calls a file manager - whatever is installed!
+#private-bin env,gio-launch-desktop,gnome-music,python*,yelp
 private-dev
-private-etc alternatives,asound.conf,fonts,machine-id,pulse
+private-etc alternatives,asound.conf,dconf,fonts,fonts,gtk-3.0,machine-id,pulse,selinux,xdg
 private-tmp
 

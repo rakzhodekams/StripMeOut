@@ -15,6 +15,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkfile ${HOME}/.config/ktouch2rc
@@ -28,7 +29,6 @@ apparmor
 caps.drop all
 machine-id
 net none
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -48,3 +48,6 @@ private-cache
 private-dev
 private-etc alternatives,fonts,kde5rc,machine-id
 private-tmp
+
+dbus-user none
+dbus-system none

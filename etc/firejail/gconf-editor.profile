@@ -9,7 +9,8 @@ include gconf-editor.local
 
 blacklist /tmp/.X11-unix
 
-ignore net none
+whitelist /usr/share/gconf-editor
+
 ignore x11 none
 
 # Redirect

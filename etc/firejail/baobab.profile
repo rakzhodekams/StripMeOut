@@ -6,17 +6,20 @@ include baobab.local
 # Persistent global definitions
 include globals.local
 
-include disable-common.inc
+# include disable-common.inc
 include disable-devel.inc
 include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 # include disable-programs.inc
+include disable-shell.inc
+# include disable-xdg.inc
+
+include whitelist-runuser-common.inc
 
 caps.drop all
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -27,8 +30,15 @@ nou2f
 novideo
 protocol unix
 seccomp
+seccomp.block-secondary
 shell none
+tracelog
 
 private-bin baobab
 private-dev
 private-tmp
+
+# dbus-user none
+# dbus-system none
+
+read-only ${HOME}

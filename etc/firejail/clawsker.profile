@@ -20,15 +20,14 @@ include disable-programs.inc
 
 mkdir ${HOME}/.claws-mail
 whitelist ${HOME}/.claws-mail
-whitelist /usr/share/perl5
 include whitelist-common.inc
 include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -48,5 +47,8 @@ private-dev
 private-etc alternatives,fonts
 private-lib girepository-1.*,libdbus-glib-1.so.*,libetpan.so.*,libgirepository-1.*,libgtk-x11-2.0.so.*,libstartup-notification-1.so.*,perl*
 private-tmp
+
+dbus-user none
+dbus-system none
 
 #memory-deny-write-execute - breaks on Arch (see issue #1803)

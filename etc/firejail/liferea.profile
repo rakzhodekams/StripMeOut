@@ -46,8 +46,17 @@ novideo
 protocol unix,inet,inet6
 seccomp
 shell none
+tracelog
 
 disable-mnt
 private-dev
 private-tmp
 
+dbus-user filter
+dbus-user.own net.sourceforge.liferea
+dbus-user.talk ca.desrt.dconf
+# Uncomment the below if you use the 'Popup Notifications' plugin or add 'dbus-user.talk org.freedesktop.Notifications' to your liferea.local
+#dbus-user.talk org.freedesktop.Notifications
+# Uncomment the below if you use the 'Libsecret Support' plugin or add 'dbus-user.talk org.freedesktop.secrets' to your liferea.local
+#dbus-user.talk org.freedesktop.secrets
+dbus-system none

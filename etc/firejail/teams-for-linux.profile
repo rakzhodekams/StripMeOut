@@ -1,42 +1,26 @@
 # Firejail profile for teams-for-linux
-# Description: Teams for Linux is an Electron application for Microsoft's team collaboration and chat program
+# Description: Unofficial Microsoft Teams client for Linux using Electron.
 # This file is overwritten after every install/update
 # Persistent local customizations
 include teams-for-linux.local
 # Persistent global definitions
 include globals.local
 
-noblacklist ${HOME}/.config/teams-for-linux
+# Disabled until someone reported positive feedback
+ignore include disable-xdg.inc
+ignore include whitelist-runuser-common.inc
+ignore include whitelist-usr-share-common.inc
 
-include disable-common.inc
-include disable-devel.inc
-include disable-exec.inc
-include disable-interpreters.inc
-include disable-passwdmgr.inc
-include disable-programs.inc
+ignore dbus-user none
+ignore dbus-system none
+
+noblacklist ${HOME}/.config/teams-for-linux
 
 mkdir ${HOME}/.config/teams-for-linux
 whitelist ${HOME}/.config/teams-for-linux
-whitelist ${DOWNLOADS}
-include whitelist-common.inc
-include whitelist-var-common.inc
 
-caps.drop all
-netfilter
-nodvd
-nogroups
-nonewprivs
-noroot
-notv
-nou2f
-novideo
-protocol unix,inet,inet6,netlink
-seccomp
-shell none
-
-disable-mnt
 private-bin bash,cut,echo,egrep,grep,head,sed,sh,teams-for-linux,tr,xdg-mime,xdg-open,zsh
-private-cache
-private-dev
 private-etc ca-certificates,crypto-policies,fonts,ld.so.cache,localtime,machine-id,pki,resolv.conf,ssl
-private-tmp
+
+# Redirect
+include electron.profile

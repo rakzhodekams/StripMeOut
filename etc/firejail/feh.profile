@@ -1,6 +1,7 @@
 # Firejail profile for feh
 # Description: imlib2 based image viewer
 # This file is overwritten after every install/update
+quiet
 # Persistent local customizations
 include feh.local
 # Persistent global definitions
@@ -12,6 +13,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 
 # This profile disables network access
 # In order to enable network access,
@@ -21,7 +23,6 @@ include disable-programs.inc
 caps.drop all
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -39,3 +40,6 @@ private-cache
 private-dev
 private-etc alternatives,feh
 private-tmp
+
+dbus-user none
+dbus-system none

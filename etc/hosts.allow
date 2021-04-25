@@ -15,5 +15,3 @@
 # Allow everyone from foobar.edu to access everything except for
 # the terminalserver 
 #ALL: .foobar.edu EXCEPT terminalserver.foobar.edu
-ALL: LOCAL @wheel
-time: LOCAL, .gentoo.org

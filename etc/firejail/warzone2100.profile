@@ -14,14 +14,19 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 
-# mkdir ${HOME}/.warzone2100-3.1
-# mkdir ${HOME}/.warzone2100-3.2
+mkdir ${HOME}/.warzone2100-3.1
+mkdir ${HOME}/.warzone2100-3.2
 whitelist ${HOME}/.warzone2100-3.1
 whitelist ${HOME}/.warzone2100-3.2
+whitelist /usr/share/games
 include whitelist-common.inc
+include whitelist-runuser-common.inc
+include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
+apparmor
 caps.drop all
 netfilter
 nodvd

@@ -7,6 +7,7 @@ include simplescreenrecorder.local
 include globals.local
 
 noblacklist ${VIDEOS}
+noblacklist ${HOME}/.ssr
 
 include disable-common.inc
 include disable-devel.inc
@@ -18,6 +19,7 @@ include disable-xdg.inc
 
 whitelist /usr/share/simplescreenrecorder
 include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all
@@ -35,5 +37,3 @@ tracelog
 private-cache
 private-dev
 private-tmp
-
-memory-deny-write-execute

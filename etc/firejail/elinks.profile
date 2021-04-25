@@ -9,6 +9,7 @@ include globals.local
 noblacklist ${HOME}/.elinks
 
 blacklist /tmp/.X11-unix
+blacklist ${RUNUSER}/wayland-*
 
 include disable-common.inc
 include disable-devel.inc
@@ -16,6 +17,8 @@ include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
 include disable-xdg.inc
+
+include whitelist-runuser-common.inc
 
 caps.drop all
 netfilter

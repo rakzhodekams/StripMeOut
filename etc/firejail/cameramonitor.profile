@@ -17,6 +17,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 whitelist /usr/share/cameramonitor
@@ -30,7 +31,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-#nodbus
 nodvd
 nogroups
 nonewprivs
@@ -49,5 +49,8 @@ private-bin cameramonitor,python*
 private-cache
 private-etc alternatives,fonts
 private-tmp
+
+# dbus-user none
+# dbus-system none
 
 # memory-deny-write-execute - breaks on Arch

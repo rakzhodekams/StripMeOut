@@ -15,6 +15,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 whitelist /usr/share/arch-audit
@@ -26,7 +27,6 @@ ipc-namespace
 machine-id
 netfilter
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -45,5 +45,8 @@ private-bin arch-audit
 private-cache
 private-dev
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

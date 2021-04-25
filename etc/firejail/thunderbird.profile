@@ -6,20 +6,33 @@ include thunderbird.local
 # Persistent global definitions
 include globals.local
 
-# Users have thunderbird set to open a browser by clicking a link in an email
-# We are not allowed to blacklist browser-specific directories
+ignore include whitelist-runuser-common.inc
+
+# writable-run-user and dbus are needed by enigmail
+ignore dbus-user none
+ignore dbus-system none
+writable-run-user
+
+# If you want to read local mail stored in /var/mail edit /etc/apparmor.d/firejail-default accordingly
+# and add the following to thunderbird.local:
+#noblacklist /var/mail
+#noblacklist /var/spool/mail
+#whitelist /var/mail
+#whitelist /var/spool/mail
+#writable-var
+
+# These lines are needed to allow Firefox to load your profile when clicking a link in an email
+noblacklist ${HOME}/.mozilla
+whitelist ${HOME}/.mozilla/firefox/profiles.ini
+read-only ${HOME}/.mozilla/firefox/profiles.ini
 
 noblacklist ${HOME}/.cache/thunderbird
 noblacklist ${HOME}/.gnupg
 # noblacklist ${HOME}/.icedove
 noblacklist ${HOME}/.thunderbird
 
-# Uncomment the next 4 lines or put them in your thunderbird.local to
-# allow Firefox to load your profile when clicking a link in an email
-#noblacklist ${HOME}/.cache/mozilla
-#noblacklist ${HOME}/.mozilla
-#whitelist ${HOME}/.cache/mozilla/firefox
-#whitelist ${HOME}/.mozilla
+include disable-passwdmgr.inc
+include disable-xdg.inc
 
 # If you have setup Thunderbird to archive emails to a local folder,
 # make sure you add the path to that folder to the mkdir and whitelist
@@ -34,23 +47,18 @@ whitelist ${HOME}/.gnupg
 # whitelist ${HOME}/.icedove
 whitelist ${HOME}/.thunderbird
 
-#whitelist /usr/share/mozilla
-#include whitelist-usr-share-common.inc
+whitelist /usr/share/gnupg
+whitelist /usr/share/mozilla
+whitelist /usr/share/thunderbird
+whitelist /usr/share/webext
+include whitelist-usr-share-common.inc
+
+# machine-id breaks audio in browsers; enable or put it in your thunderbird.local when sound is not required
+#machine-id
+novideo
 
 # We need the real /tmp for data exchange when xdg-open handles email attachments on KDE
 ignore private-tmp
-# machine-id breaks audio in browsers; enable or put it in your thunderbird.local when sound is not required
-# machine-id
-read-only ${HOME}/.config/mimeapps.list
-# writable-run-user and dbus are needed by enigmail
-writable-run-user
-ignore nodbus
 
-# If you want to read local mail stored in /var/mail, add the following to thunderbird.local:
-# noblacklist /var/mail
-# noblacklist /var/spool/mail
-# writable-var
-
-# allow browsers
 # Redirect
 include firefox-common.profile

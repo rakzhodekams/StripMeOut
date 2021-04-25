@@ -1,1 +1,1 @@
-media-plugins/alsa-plugins pulseaudio ffmpeg libsamplerate
+media-plugins/alsa-plugins -pulseaudio -usb_stream ffmpeg libsamplerate mix

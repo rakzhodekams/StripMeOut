@@ -22,6 +22,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.quodlibet
@@ -31,10 +32,10 @@ include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
 caps.drop all
+ipc-namespace
 machine-id
 netfilter
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -53,5 +54,8 @@ private-dev
 private-etc alternatives,fonts,group,passwd
 private-lib libatk-1.0.so.*,libgdk-3.so.*,libgdk_pixbuf-2.0.so.*,libgirepository-1.0.so.*,libgstreamer-1.0.so.*,libgtk-3.so.*,libgtksourceview-3.0.so.*,libpango-1.0.so.*,libpython*,libreadline.so.*,libsoup-2.4.so.*,libssl.so.1.*,python2*,python3*
 private-tmp
+
+dbus-user none
+dbus-system none
 
 #memory-deny-write-execute - breaks on Arch (see issue #1803)

@@ -6,7 +6,6 @@ include pitivi.local
 # Persistent global definitions
 include globals.local
 
-
 noblacklist ${HOME}/.config/pitivi
 
 # Allow python (blacklisted by disable-interpreters.inc)
@@ -20,11 +19,13 @@ include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
 
+include whitelist-runuser-common.inc
 include whitelist-var-common.inc
 
+apparmor
 caps.drop all
 ipc-namespace
-netfilter
+net none
 nodvd
 nogroups
 nonewprivs

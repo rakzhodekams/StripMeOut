@@ -7,6 +7,8 @@ include pandoc.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}
+
 noblacklist ${DOCUMENTS}
 
 include disable-common.inc
@@ -15,6 +17,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 # breaks pdf output
@@ -26,7 +29,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -45,7 +47,10 @@ disable-mnt
 private-bin context,latex,mktexfmt,pandoc,pdflatex,pdfroff,prince,weasyprint,wkhtmltopdf
 private-cache
 private-dev
-private-etc alternatives,texlive
+private-etc alternatives,texlive,texmf
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

@@ -14,6 +14,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.clonk
@@ -21,10 +22,11 @@ whitelist ${HOME}/.clonk
 include whitelist-common.inc
 include whitelist-var-common.inc
 
+apparmor
 caps.drop all
 ipc-namespace
-net none
-nodbus
+# net none - networked game
+netfilter
 nodvd
 nogroups
 nonewprivs
@@ -42,3 +44,6 @@ private-bin c4group,openclonk
 private-cache
 private-dev
 private-tmp
+
+dbus-user none
+dbus-system none

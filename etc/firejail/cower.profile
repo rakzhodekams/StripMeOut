@@ -16,6 +16,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 # This profile could be significantly strengthened by adding the following to cower.local
@@ -45,5 +46,4 @@ private-dev
 private-tmp
 
 memory-deny-write-execute
-
 read-only ${HOME}/.config/cower/config

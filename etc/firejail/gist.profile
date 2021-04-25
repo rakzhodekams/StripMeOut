@@ -8,6 +8,7 @@ include gist.local
 include globals.local
 
 blacklist /tmp/.X11-unix
+blacklist ${RUNUSER}/wayland-*
 
 noblacklist ${HOME}/.gist
 
@@ -35,7 +36,6 @@ ipc-namespace
 machine-id
 netfilter
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -54,5 +54,8 @@ private-cache
 private-dev
 private-etc alternatives
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

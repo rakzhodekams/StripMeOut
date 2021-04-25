@@ -14,6 +14,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.opencity
@@ -21,10 +22,10 @@ whitelist ${HOME}/.opencity
 include whitelist-common.inc
 include whitelist-var-common.inc
 
+apparmor
 caps.drop all
 ipc-namespace
 net none
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -42,3 +43,6 @@ private-bin opencity
 private-cache
 private-dev
 private-tmp
+
+dbus-user none
+dbus-system none

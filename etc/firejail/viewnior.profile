@@ -18,14 +18,15 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 
 include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -44,5 +45,8 @@ private-cache
 private-dev
 private-etc alternatives,fonts,machine-id
 private-tmp
+
+dbus-user none
+dbus-system none
 
 #memory-deny-write-execute - breaks on Arch (see issues #1803 and #1808)

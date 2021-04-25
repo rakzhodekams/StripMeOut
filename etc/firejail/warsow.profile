@@ -17,19 +17,22 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.cache/warsow-2.1
 mkdir ${HOME}/.local/share/warsow-2.1
 whitelist ${HOME}/.cache/warsow-2.1
 whitelist ${HOME}/.local/share/warsow-2.1
+whitelist /usr/share/warsow
 include whitelist-common.inc
+include whitelist-runuser-common.inc
+include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
 caps.drop all
 ipc-namespace
 netfilter
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -47,3 +50,6 @@ private-bin warsow
 private-cache
 private-dev
 private-tmp
+
+dbus-user none
+dbus-system none

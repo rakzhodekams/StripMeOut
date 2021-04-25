@@ -16,6 +16,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 whitelist /usr/share/devedeng
@@ -29,7 +30,6 @@ caps.drop all
 ipc-namespace
 machine-id
 netfilter
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -41,13 +41,17 @@ novideo
 protocol inet,inet6
 # allow set_mempolicy, which is required to encode using libx265
 seccomp !set_mempolicy
+seccomp.block-secondary
 shell none
 tracelog
 
 private-bin ffmpeg
 private-cache
 private-dev
-private-etc alternatives,ca-certificates,hosts,pkcs11,pki,resolv.conf,ssl
+private-etc alternatives,ca-certificates,crypto-policies,hosts,ld.so.cache,ld.so.conf,ld.so.conf.d,ld.so.preload,nsswitch.conf,pkcs11,pki,resolv.conf,ssl
 private-tmp
+
+dbus-user none
+dbus-system none
 
 # memory-deny-write-execute - it breaks old versions of ffmpeg

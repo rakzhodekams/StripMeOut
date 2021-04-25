@@ -7,6 +7,7 @@ include ark.local
 include globals.local
 
 noblacklist ${HOME}/.config/arkrc
+noblacklist ${HOME}/.local/share/kxmlgui5/ark
 
 include disable-common.inc
 include disable-devel.inc
@@ -23,7 +24,6 @@ apparmor
 caps.drop all
 # net none
 netfilter
-# nodbus
 nodvd
 nogroups
 nonewprivs
@@ -42,3 +42,5 @@ private-bin 7z,ark,bash,lrzip,lsar,lz4,lzop,p7zip,rar,sh,tclsh,unar,unrar,unzip,
 private-dev
 private-tmp
 
+# dbus-user none
+# dbus-system none

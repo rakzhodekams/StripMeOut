@@ -26,6 +26,7 @@ whitelist ${HOME}/.bibletime
 whitelist ${HOME}/.sword
 whitelist ${HOME}/.local/share/bibletime
 whitelist /usr/share/bibletime
+whitelist /usr/share/doc/bibletime
 whitelist /usr/share/sword
 include whitelist-common.inc
 include whitelist-usr-share-common.inc
@@ -35,7 +36,6 @@ apparmor
 caps.drop all
 machine-id
 netfilter
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -54,3 +54,6 @@ private-cache
 private-dev
 private-etc alternatives,ca-certificates,crypto-policies,fonts,login.defs,machine-id,passwd,pki,resolv.conf,ssl,sword,sword.conf
 private-tmp
+
+dbus-user none
+dbus-system none

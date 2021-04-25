@@ -16,14 +16,17 @@ include disable-passwdmgr.inc
 include disable-programs.inc
 include disable-xdg.inc
 
+mkdir ${HOME}/.easystroke
+whitelist ${HOME}/.easystroke
+include whitelist-common.inc
 include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all
 machine-id
 net none
 no3d
-# nodbus
 nodvd
 nogroups
 nonewprivs
@@ -35,6 +38,7 @@ novideo
 protocol unix
 seccomp
 shell none
+tracelog
 
 disable-mnt
 # breaks custom shell command functionality
@@ -45,5 +49,8 @@ private-etc alternatives,fonts,group,passwd
 # breaks custom shell command functionality
 #private-lib gdk-pixbuf-2.*,gio,gvfs/libgvfscommon.so,libgconf-2.so.*,librsvg-2.so.*
 private-tmp
+
+# dbus-user none
+# dbus-system none
 
 memory-deny-write-execute

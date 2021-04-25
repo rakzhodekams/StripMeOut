@@ -5,6 +5,8 @@ include img2txt.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 noblacklist ${DOCUMENTS}
 noblacklist ${PICTURES}
 
@@ -18,13 +20,13 @@ include disable-xdg.inc
 
 whitelist /usr/share/imlib2
 include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all
 ipc-namespace
 machine-id
 net none
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -43,5 +45,8 @@ x11 none
 private-cache
 private-dev
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

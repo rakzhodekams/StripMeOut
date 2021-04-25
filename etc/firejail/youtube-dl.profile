@@ -21,6 +21,7 @@ include allow-python2.inc
 include allow-python3.inc
 
 blacklist /tmp/.X11-unix
+blacklist ${RUNUSER}
 
 include disable-common.inc
 include disable-devel.inc
@@ -28,6 +29,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 include whitelist-usr-share-common.inc
@@ -39,7 +41,6 @@ ipc-namespace
 machine-id
 netfilter
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -50,13 +51,17 @@ nou2f
 novideo
 protocol unix,inet,inet6
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 
 private-bin env,ffmpeg,python*,youtube-dl
 private-cache
 private-dev
-private-etc alternatives,ca-certificates,crypto-policies,hostname,hosts,mime.types,pki,resolv.conf,ssl,youtube-dl.conf
+private-etc alternatives,ca-certificates,crypto-policies,hostname,hosts,ld.so.cache,mime.types,pki,resolv.conf,ssl,youtube-dl.conf
 private-tmp
+
+dbus-user none
+dbus-system none
 
 #memory-deny-write-execute - breaks on Arch (see issue #1803)

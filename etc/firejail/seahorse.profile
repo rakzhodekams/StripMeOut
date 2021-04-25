@@ -31,7 +31,10 @@ whitelist /usr/share/gnupg
 whitelist /usr/share/gnupg2
 whitelist /usr/share/seahorse
 whitelist /usr/share/seahorse-nautilus
+whitelist ${RUNUSER}/gnupg
+whitelist ${RUNUSER}/keyring
 #include whitelist-common.inc
+include whitelist-runuser-common.inc
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
@@ -58,3 +61,9 @@ private-cache
 private-dev
 private-etc ca-certificates,crypto-policies,dconf,fonts,gconf,gtk-2.0,gtk-3.0,host.conf,hostname,hosts,ld.so.preload,nsswitch.conf,pango,pki,protocols,resolv.conf,rpc,services,ssh,ssl,X11
 writable-run-user
+
+dbus-user filter
+dbus-user.own org.gnome.seahorse
+dbus-user.own org.gnome.seahorse.Application
+dbus-user.talk org.freedesktop.secrets
+dbus-system none

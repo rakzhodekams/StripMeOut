@@ -12,8 +12,8 @@ noblacklist ${HOME}/.config/torbrowser
 noblacklist ${HOME}/.local/share/torbrowser
 
 # Allow python (blacklisted by disable-interpreters.inc)
-include	allow-python2.inc
-include	allow-python3.inc
+include allow-python2.inc
+include allow-python3.inc
 
 include disable-common.inc
 include disable-devel.inc
@@ -33,7 +33,6 @@ include whitelist-var-common.inc
 
 caps.drop all
 netfilter
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -48,7 +47,10 @@ shell none
 #tracelog
 
 disable-mnt
-private-bin bash,cat,cp,cut,dirname,env,expr,file,gpg,grep,gxmessage,kdialog,ln,mkdir,mv,python*,rm,sed,sh,tail,tar,tclsh,test,tor-browser,tor-browser-en,torbrowser-launcher,update-desktop-database,xmessage,xz,zenity
+private-bin bash,cat,cp,cut,dirname,env,expr,file,gpg,grep,gxmessage,id,kdialog,ln,mkdir,mv,python*,rm,sed,sh,tail,tar,tclsh,test,tor-browser,tor-browser-en,torbrowser-launcher,update-desktop-database,xmessage,xz,zenity
 private-dev
-private-etc alsa,alternatives,asound.conf,ca-certificates,crypto-policies,fonts,ld.so.cache,machine-id,pki,pulse,resolv.conf,ssl
+private-etc alsa,alternatives,asound.conf,ca-certificates,crypto-policies,fonts,ld.so.cache,ld.so.conf,ld.so.conf.d,ld.so.preload,machine-id,pki,pulse,resolv.conf,ssl
 private-tmp
+
+dbus-user none
+dbus-system none

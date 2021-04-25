@@ -13,6 +13,9 @@ noblacklist ${HOME}/.mplayer
 noblacklist ${HOME}/.netrc
 noblacklist ${HOME}/mps
 
+# Allow lua (blacklisted by disable-interpreters.inc)
+include allow-lua.inc
+
 # Allow python (blacklisted by disable-interpreters.inc)
 include allow-python2.inc
 include allow-python3.inc
@@ -26,6 +29,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.config/mps-youtube
@@ -39,16 +43,13 @@ whitelist ${HOME}/.config/youtube-dl
 whitelist ${HOME}/.mplayer
 whitelist ${HOME}/.netrc
 whitelist ${HOME}/mps
-whitelist ${DOWNLOADS}
-whitelist ${MUSIC}
-whitelist ${VIDEOS}
 include whitelist-common.inc
+include whitelist-player-common.inc
 include whitelist-var-common.inc
 
 apparmor
 caps.drop all
 netfilter
-nodbus
 nodvd
 # Seems to cause issues with Nvidia drivers sometimes
 nogroups
@@ -67,3 +68,5 @@ private-bin env,ffmpeg,mplayer,mpsyt,mpv,python*,youtube-dl
 private-dev
 private-tmp
 
+dbus-user none
+dbus-system none

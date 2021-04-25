@@ -14,10 +14,12 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkfile ${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-mixer.xml
 whitelist ${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-mixer.xml
+whitelist /usr/share/gstreamer
 whitelist /usr/share/xfce4
 whitelist /usr/share/xfce4-mixer
 include whitelist-common.inc
@@ -29,7 +31,6 @@ caps.drop all
 ipc-namespace
 netfilter
 no3d
-# nodbus
 nodvd
 nogroups
 nonewprivs
@@ -48,4 +49,9 @@ private-dev
 private-etc alternatives,asound.conf,fonts,machine-id,pulse
 private-tmp
 
-memory-deny-write-execute
+dbus-user filter
+dbus-user.own org.xfce.xfce4-mixer
+dbus-user.talk org.xfce.Xfconf
+dbus-system none
+
+# memory-deny-write-execute - breaks on Arch

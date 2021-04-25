@@ -20,10 +20,10 @@ nodvd
 nonewprivs
 noroot
 notv
-protocol unix,inet,inet6
+protocol unix,inet,inet6,netlink
 seccomp
 
 disable-mnt
 private-cache
+private-etc alsa,alternatives,ca-certificates,crypto-policies,fonts,group,ld.so.cache,localtime,machine-id,os-release,pki,pulse,resolv.conf,ssl,xdg
 private-tmp
-

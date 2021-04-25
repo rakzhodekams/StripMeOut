@@ -1,1 +1,1 @@
-net-analyzer/wireshark sshdump lto libxml2 http2 tfshark opus maxminddb
+net-analyzer/wireshark tfshark sshdump smi maxminddb

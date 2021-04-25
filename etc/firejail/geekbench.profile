@@ -14,6 +14,7 @@ include disable-passwdmgr.inc
 include disable-programs.inc
 include disable-xdg.inc
 
+include whitelist-common.inc
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
@@ -24,7 +25,6 @@ ipc-namespace
 machine-id
 netfilter
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -43,10 +43,12 @@ private-bin bash,geekbenc*,sh
 private-cache
 private-dev
 private-etc alternatives,group,lsb-release,passwd
-private-lib libstdc++.so.*
+private-lib gcc/*/*/libstdc++.so.*
 private-opt none
 private-tmp
 
-#memory-deny-write-execute - breaks on Arch (see issue #1803)
+dbus-user none
+dbus-system none
 
+#memory-deny-write-execute - breaks on Arch (see issue #1803)
 read-only ${HOME}

@@ -16,6 +16,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.config/Bitwarden
@@ -29,7 +30,6 @@ caps.drop all
 machine-id
 netfilter
 no3d
-#nodbus - breaks appindicator (tray) functionality
 nodvd
 nogroups
 nonewprivs
@@ -39,7 +39,7 @@ notv
 nou2f
 novideo
 protocol unix,inet,inet6,netlink
-seccomp
+seccomp !chroot
 shell none
 #tracelog - breaks on Arch
 
@@ -50,5 +50,9 @@ private-dev
 private-etc alternatives,ca-certificates,crypto-policies,fonts,hosts,nsswitch.conf,pki,resolv.conf,ssl
 private-opt Bitwarden
 private-tmp
+
+# breaks appindicator (tray) functionality
+# dbus-user none
+# dbus-system none
 
 #memory-deny-write-execute - breaks on Arch (see issue #1803)

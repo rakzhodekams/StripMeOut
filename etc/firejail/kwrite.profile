@@ -13,6 +13,7 @@ noblacklist ${HOME}/.config/katesyntaxhighlightingrc
 noblacklist ${HOME}/.config/katevirc
 noblacklist ${HOME}/.config/kwriterc
 noblacklist ${HOME}/.local/share/kwrite
+noblacklist ${HOME}/.local/share/kxmlgui5/kwrite
 noblacklist ${DOCUMENTS}
 
 include disable-common.inc
@@ -21,6 +22,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 include whitelist-var-common.inc
@@ -29,7 +31,6 @@ apparmor
 caps.drop all
 # net none
 netfilter
-# nodbus
 nodvd
 nogroups
 nonewprivs
@@ -48,5 +49,7 @@ private-dev
 private-etc alternatives,fonts,kde4rc,kde5rc,ld.so.cache,machine-id,pulse,xdg
 private-tmp
 
+# dbus-user none
+# dbus-system none
 
 join-or-start kwrite

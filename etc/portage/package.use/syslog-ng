@@ -1,1 +1,1 @@
-app-admin/syslog-ng caps geoip2 http smtp snmp spoof-source tcpd
+app-admin/syslog-ng geoip2 http smtp spoof-source python json

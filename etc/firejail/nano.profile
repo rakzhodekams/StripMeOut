@@ -7,6 +7,8 @@ include nano.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 noblacklist ${HOME}/.config/nano
 noblacklist ${HOME}/.nanorc
 
@@ -26,7 +28,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -47,5 +48,8 @@ private-cache
 private-dev
 # Comment the next line if you want to edit files in /etc directly
 private-etc alternatives,nanorc
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

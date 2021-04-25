@@ -17,6 +17,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 include whitelist-usr-share-common.inc
@@ -24,7 +25,6 @@ include whitelist-var-common.inc
 
 caps.drop all
 net none
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -42,3 +42,6 @@ private-dev
 # On Debian-based systems, display is a symlink in /etc/alternatives
 private-etc alternatives
 private-tmp
+
+dbus-user none
+dbus-system none

@@ -17,8 +17,10 @@ include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
 
+include whitelist-runuser-common.inc
 include whitelist-var-common.inc
 
+apparmor
 caps.drop all
 netfilter
 nodvd
@@ -31,6 +33,7 @@ nou2f
 novideo
 protocol unix
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 

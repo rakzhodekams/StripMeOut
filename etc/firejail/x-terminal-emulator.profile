@@ -8,8 +8,6 @@ include globals.local
 caps.drop all
 ipc-namespace
 net none
-netfilter
-nodbus
 nogroups
 noroot
 nou2f
@@ -17,5 +15,8 @@ protocol unix
 seccomp
 
 private-dev
+
+dbus-user none
+dbus-system none
 
 noexec /tmp

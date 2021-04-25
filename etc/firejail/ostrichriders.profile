@@ -14,17 +14,19 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.ostrichriders
 whitelist ${HOME}/.ostrichriders
+whitelist /usr/share/ostrichriders
 include whitelist-common.inc
+include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
 caps.drop all
 ipc-namespace
 net none
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -40,6 +42,9 @@ tracelog
 disable-mnt
 private-bin ostrichriders
 private-cache
-# private-dev should be commented for controllers
+# comment the following line if you need controller support
 private-dev
 private-tmp
+
+dbus-user none
+dbus-system none

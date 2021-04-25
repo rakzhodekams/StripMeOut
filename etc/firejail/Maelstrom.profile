@@ -14,6 +14,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 whitelist /var/lib/games
@@ -23,7 +24,6 @@ include whitelist-var-common.inc
 caps.drop all
 ipc-namespace
 net none
-nodbus
 nodvd
 nogroups
 #nonewprivs
@@ -41,3 +41,6 @@ private-bin Maelstrom
 private-cache
 private-dev
 private-tmp
+
+dbus-user none
+dbus-system none

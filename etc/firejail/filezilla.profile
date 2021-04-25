@@ -8,6 +8,7 @@ include globals.local
 
 noblacklist ${HOME}/.config/filezilla
 noblacklist ${HOME}/.filezilla
+noblacklist ${HOME}/.ssh
 
 # Allow python (blacklisted by disable-interpreters.inc)
 include allow-python2.inc
@@ -17,6 +18,8 @@ include disable-common.inc
 include disable-devel.inc
 include disable-interpreters.inc
 include disable-programs.inc
+
+include whitelist-runuser-common.inc
 include whitelist-var-common.inc
 
 caps.drop all

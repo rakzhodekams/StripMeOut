@@ -2,11 +2,25 @@
 # Persistent customizations should go in a .local file.
 include disable-interpreters.local
 
+# gjs
+blacklist ${PATH}/gjs
+blacklist ${PATH}/gjs-console
+blacklist /usr/lib/gjs
+blacklist /usr/lib64/gjs
+blacklist /usr/lib/libgjs*
+blacklist /usr/lib64/libgjs*
+
 # Lua
 blacklist ${PATH}/lua*
 blacklist /usr/include/lua*
+blacklist /usr/lib/liblua*
 blacklist /usr/lib/lua
-blacklist /usr/share/lua
+blacklist /usr/lib64/liblua*
+blacklist /usr/lib64/lua
+blacklist /usr/share/lua*
+
+# mozjs
+blacklist /usr/lib64/libmozjs-*
 
 # Node.js
 blacklist ${PATH}/node
@@ -22,6 +36,7 @@ blacklist ${PATH}/perl
 blacklist ${PATH}/site_perl
 blacklist ${PATH}/vendor_perl
 blacklist /usr/lib/perl*
+blacklist /usr/lib64/perl*
 blacklist /usr/share/perl*
 
 # PHP
@@ -47,5 +62,6 @@ blacklist /usr/share/python2*
 blacklist ${PATH}/python3*
 blacklist /usr/include/python3*
 blacklist /usr/lib/python3*
+blacklist /usr/lib64/python3*
 blacklist /usr/local/lib/python3*
 blacklist /usr/share/python3*

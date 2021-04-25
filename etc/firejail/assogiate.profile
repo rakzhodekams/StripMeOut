@@ -14,6 +14,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 whitelist ${PICTURES}
@@ -26,7 +27,6 @@ caps.drop all
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -47,4 +47,8 @@ private-dev
 private-lib gnome-vfs-2.0,libacl.so.*,libattr.so.*,libfam.so.*
 private-tmp
 
+dbus-user none
+dbus-system none
+
 memory-deny-write-execute
+read-write ${HOME}/.local/share/mime

@@ -1,1 +1,1 @@
-mail-client/mutt gpgme pgp-classic smime-classic
+mail-client/mutt gpgme idn pgp-classic smime-classic

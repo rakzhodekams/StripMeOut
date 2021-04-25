@@ -18,6 +18,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.electrum
@@ -29,7 +30,6 @@ caps.drop all
 ipc-namespace
 netfilter
 no3d
-#nodbus
 nodvd
 nogroups
 nonewprivs
@@ -50,3 +50,5 @@ private-dev
 private-etc alternatives,ca-certificates,crypto-policies,dconf,fonts,machine-id,pki,resolv.conf,ssl
 private-tmp
 
+# dbus-user none
+# dbus-system none

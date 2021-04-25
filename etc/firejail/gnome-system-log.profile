@@ -12,6 +12,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 whitelist /var/log
@@ -24,7 +25,6 @@ caps.drop all
 ipc-namespace
 # net none - breaks dbus
 no3d
-# nodbus
 nodvd
 # When using 'volatile' storage (https://www.freedesktop.org/software/systemd/man/journald.conf.html),
 # comment both 'nogroups' and 'noroot'
@@ -49,8 +49,10 @@ private-lib
 private-tmp
 writable-var-log
 
-memory-deny-write-execute
+# dbus-user none
+# dbus-system none
 
-# comment this if you export logs to a file in your ${HOME}
+memory-deny-write-execute
+# Comment the line below if you export logs to a file in your ${HOME}
 # or put 'ignore read-only ${HOME}' in your gnome-system-log.local
 read-only ${HOME}

@@ -13,6 +13,7 @@ include globals.local
 # Usage: firejail --profile=rsync-download_only rsync
 
 blacklist /tmp/.X11-unix
+blacklist ${RUNUSER}
 
 include disable-common.inc
 include disable-devel.inc
@@ -20,6 +21,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 # Uncomment or add to rsync.local to enable extra hardening
@@ -31,7 +33,6 @@ ipc-namespace
 machine-id
 netfilter
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -51,5 +52,8 @@ private-cache
 private-dev
 private-etc alternatives,ca-certificates,crypto-policies,host.conf,hostname,hosts,nsswitch.conf,pki,protocols,resolv.conf,rpc,services,ssl
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

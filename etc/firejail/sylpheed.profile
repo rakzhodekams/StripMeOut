@@ -8,25 +8,10 @@ include globals.local
 
 noblacklist ${HOME}/.sylpheed-2.0
 
-include disable-common.inc
-include disable-devel.inc
-include disable-interpreters.inc
-include disable-passwdmgr.inc
-include disable-programs.inc
+mkdir ${HOME}/.sylpheed-2.0
+whitelist ${HOME}/.sylpheed-2.0
 
-caps.drop all
-netfilter
-nodvd
-nogroups
-nonewprivs
-noroot
-nosound
-notv
-nou2f
-novideo
-protocol unix,inet,inet6
-seccomp
-shell none
+whitelist /usr/share/sylpheed
 
-private-dev
-private-tmp
+# Redirect
+include email-common.profile

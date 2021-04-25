@@ -15,6 +15,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.cache/feedreader
@@ -23,6 +24,7 @@ whitelist ${HOME}/.cache/feedreader
 whitelist ${HOME}/.local/share/feedreader
 whitelist /usr/share/feedreader
 include whitelist-common.inc
+include whitelist-runuser-common.inc
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
@@ -40,8 +42,18 @@ novideo
 protocol unix,inet,inet6
 seccomp
 shell none
+tracelog
 
 disable-mnt
+private-cache
 private-dev
 private-tmp
 
+dbus-user filter
+dbus-user.own org.gnome.FeedReader
+dbus-user.own org.gnome.FeedReader.ArticleView
+dbus-user.talk org.freedesktop.secrets
+# Enable as you need.
+#dbus-user.talk org.freedesktop.Notifications
+#dbus-user.talk org.gnome.OnlineAccounts
+dbus-system none

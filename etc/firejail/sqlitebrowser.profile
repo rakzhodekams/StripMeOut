@@ -15,8 +15,10 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
+include whitelist-runuser-common.inc
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
@@ -24,7 +26,6 @@ apparmor
 caps.drop all
 ipc-namespace
 netfilter
-# nodbus - breaks proxy creation
 nodvd
 nogroups
 nonewprivs
@@ -35,6 +36,7 @@ nou2f
 novideo
 protocol unix,inet,inet6,netlink
 seccomp
+seccomp.block-secondary
 shell none
 
 private-bin sqlitebrowser
@@ -42,5 +44,9 @@ private-cache
 private-dev
 private-etc alternatives,ca-certificates,crypto-policies,fonts,group,machine-id,passwd,pki,ssl
 private-tmp
+
+# breaks proxy creation
+# dbus-user none
+# dbus-system none
 
 #memory-deny-write-execute - breaks on Arch (see issue #1803)

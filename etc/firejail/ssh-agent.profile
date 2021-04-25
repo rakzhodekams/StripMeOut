@@ -11,6 +11,7 @@ noblacklist /tmp/ssh-*
 noblacklist ${HOME}/.ssh
 
 blacklist /tmp/.X11-unix
+blacklist ${RUNUSER}/wayland-*
 
 include disable-common.inc
 include disable-passwdmgr.inc
@@ -21,7 +22,6 @@ include whitelist-usr-share-common.inc
 caps.drop all
 netfilter
 no3d
-nodbus
 nodvd
 nonewprivs
 noroot
@@ -33,3 +33,6 @@ shell none
 tracelog
 
 writable-run-user
+
+dbus-user none
+dbus-system none

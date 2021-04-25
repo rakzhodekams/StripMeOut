@@ -13,16 +13,18 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 whitelist /usr/share/devhelp
+whitelist /usr/share/doc
+whitelist /usr/share/gtk-doc/html
 include whitelist-common.inc
 include whitelist-usr-share-common.inc
 
 apparmor
 caps.drop all
 # net none - makes settings immutable
-# nodbus - makes settings immutable
 nodvd
 nogroups
 nonewprivs
@@ -43,6 +45,9 @@ private-dev
 private-etc alternatives,dconf,fonts,ld.so.cache,machine-id,ssl
 private-tmp
 
-#memory-deny-write-execute - breaks on Arch (see issue #1803)
+# makes settings immutable
+# dbus-user none
+# dbus-system none
 
+#memory-deny-write-execute - breaks on Arch (see issue #1803)
 read-only ${HOME}

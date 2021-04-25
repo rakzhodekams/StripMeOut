@@ -18,6 +18,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 
 include whitelist-var-common.inc
 
@@ -26,7 +27,6 @@ caps.drop all
 machine-id
 # net none - makes settings immutable
 no3d
-# nodbus - makes settings immutable
 nodvd
 nogroups
 nonewprivs
@@ -44,6 +44,10 @@ private-bin pluma
 private-dev
 private-lib aspell,gconv,libgspell-1.so.*,libreadline.so.*,libtinfo.so.*,pluma
 private-tmp
+
+# makes settings immutable
+# dbus-user none
+# dbus-system none
 
 memory-deny-write-execute
 

@@ -12,9 +12,11 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 whitelist /var/log/journal
+include whitelist-runuser-common.inc
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
@@ -23,7 +25,6 @@ caps.drop all
 ipc-namespace
 net none
 no3d
-nodbus
 nodvd
 # When using 'volatile' storage (https://www.freedesktop.org/software/systemd/man/journald.conf.html),
 # comment both 'nogroups' and 'noroot'
@@ -48,6 +49,9 @@ private-etc alternatives,fonts,localtime,machine-id
 private-lib gdk-pixbuf-2.*,gio,gvfs/libgvfscommon.so,libgconf-2.so.*,librsvg-2.so.*
 private-tmp
 writable-var-log
+
+dbus-user none
+dbus-system none
 
 # comment this if you export logs to a file in your ${HOME}
 # or put 'ignore read-only ${HOME}' in your gnome-logs.local.

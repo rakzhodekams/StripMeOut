@@ -10,33 +10,4 @@ include globals.local
 noblacklist /sbin
 noblacklist /usr/sbin
 
-include disable-common.inc
-# include disable-devel.inc
-include disable-exec.inc
-include disable-passwdmgr.inc
-include disable-programs.inc
-
-apparmor
-caps.drop all
-hostname cpio
-ipc-namespace
-machine-id
-net none
-no3d
-nodbus
-nodvd
-nogroups
-nonewprivs
-nosound
-notv
-nou2f
-novideo
-seccomp
-shell none
-tracelog
-x11 none
-
-private-cache
-private-dev
-
-memory-deny-write-execute
+include archiver-common.inc

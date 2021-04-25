@@ -6,6 +6,8 @@ include enchant.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 noblacklist ${HOME}/.config/enchant
 
 include disable-common.inc
@@ -16,7 +18,12 @@ include disable-passwdmgr.inc
 include disable-programs.inc
 include disable-xdg.inc
 
+mkdir ${HOME}/.config/enchant
+whitelist ${HOME}/.config/enchant
+include whitelist-common.inc
+include whitelist-runuser-common.inc
 include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all
@@ -24,7 +31,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -45,5 +51,8 @@ private-dev
 private-etc alternatives
 private-lib
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

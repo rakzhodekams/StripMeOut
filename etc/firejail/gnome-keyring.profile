@@ -17,9 +17,15 @@ include disable-interpreters.inc
 include disable-programs.inc
 include disable-xdg.inc
 
+mkdir ${HOME}/.gnupg
+whitelist ${HOME}/.gnupg
+whitelist ${DOWNLOADS}
+whitelist ${RUNUSER}/gnupg
+whitelist ${RUNUSER}/keyring
 whitelist /usr/share/gnupg
 whitelist /usr/share/gnupg2
-#include whitelist-common.inc
+include whitelist-common.inc
+include whitelist-runuser-common.inc
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
@@ -29,7 +35,6 @@ ipc-namespace
 machine-id
 netfilter
 no3d
-# nodbus
 nodvd
 nogroups
 nonewprivs
@@ -40,6 +45,7 @@ nou2f
 novideo
 protocol unix,inet,inet6
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 
@@ -49,5 +55,8 @@ private-cache
 private-dev
 #private-lib alternatives,gnome-keyring,libsecret-1.so.*,pkcs11,security
 private-tmp
+
+# dbus-user none
+dbus-system none
 
 memory-deny-write-execute

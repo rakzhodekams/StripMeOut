@@ -23,7 +23,7 @@ GRUB_DISTRIBUTOR="Gentoo"
 # Examples:
 #
 # Boot with network interface renaming disabled
-# GRUB_CMDLINE_LINUX="net.ifnames=0"
+GRUB_CMDLINE_LINUX="net.ifnames=0"
 #
 # Boot with systemd instead of sysvinit (openrc)
 # GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"
@@ -32,7 +32,7 @@ GRUB_DISTRIBUTOR="Gentoo"
 #GRUB_CMDLINE_LINUX_DEFAULT=""
 
 # Uncomment to disable graphical terminal (grub-pc only)
-#GRUB_TERMINAL=console
+GRUB_TERMINAL=console
 
 # The resolution used on graphical terminal.
 # Note that you can use only modes which your graphic card supports via VBE.

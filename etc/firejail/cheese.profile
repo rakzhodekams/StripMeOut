@@ -19,14 +19,16 @@ include disable-xdg.inc
 
 whitelist ${VIDEOS}
 whitelist ${PICTURES}
+whitelist /usr/share/gnome-video-effects
 include whitelist-common.inc
+include whitelist-runuser-common.inc
+include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
 apparmor
 caps.drop all
 machine-id
 net none
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -43,3 +45,7 @@ private-bin cheese
 private-cache
 private-etc alternatives,clutter-1.0,dconf,drirc,fonts,gtk-3.0
 private-tmp
+
+dbus-user filter
+dbus-user.talk ca.desrt.dconf
+dbus-system none

@@ -10,6 +10,9 @@ include globals.local
 
 noblacklist ${HOME}/.cache/libgweather
 
+# Allow gjs (blacklisted by disable-interpreters.inc)
+include allow-gjs.inc
+
 include disable-common.inc
 include disable-devel.inc
 include disable-exec.inc
@@ -18,6 +21,7 @@ include disable-passwdmgr.inc
 include disable-programs.inc
 include disable-xdg.inc
 
+include whitelist-runuser-common.inc
 include whitelist-var-common.inc
 
 caps.drop all
@@ -33,6 +37,7 @@ nou2f
 novideo
 protocol unix,inet,inet6
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 

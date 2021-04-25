@@ -16,6 +16,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 
 mkdir ${HOME}/.config/Mumble
 mkdir ${HOME}/.local/share/data/Mumble
@@ -34,7 +35,7 @@ nogroups
 nonewprivs
 noroot
 notv
-protocol unix,inet,inet6
+protocol unix,inet,inet6,netlink
 seccomp
 shell none
 tracelog

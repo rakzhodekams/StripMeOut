@@ -7,12 +7,15 @@ include uudeview.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 include disable-common.inc
 include disable-devel.inc
 include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 
 include whitelist-usr-share-common.inc
 
@@ -21,7 +24,6 @@ hostname uudeview
 ipc-namespace
 machine-id
 net none
-nodbus
 nodvd
 #nogroups
 nonewprivs
@@ -40,3 +42,6 @@ private-bin uudeview
 private-cache
 private-dev
 private-etc alternatives,ld.so.preload
+
+dbus-user none
+dbus-system none

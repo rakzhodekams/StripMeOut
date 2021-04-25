@@ -6,6 +6,8 @@ include odt2txt.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 noblacklist ${DOCUMENTS}
 
 include disable-common.inc
@@ -13,12 +15,12 @@ include disable-devel.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 caps.drop all
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -38,4 +40,8 @@ private-cache
 private-dev
 private-etc alternatives
 private-tmp
+
+dbus-user none
+dbus-system none
+
 read-only ${HOME}

@@ -22,11 +22,12 @@ whitelist ${HOME}/.cache/mate-calc
 whitelist ${HOME}/.config/caja
 whitelist ${HOME}/.config/mate-menu
 include whitelist-common.inc
+include whitelist-var-common.inc
 
+apparmor
 caps.drop all
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -45,5 +46,8 @@ private-etc alternatives,dconf,fonts,gtk-3.0
 private-dev
 private-opt none
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

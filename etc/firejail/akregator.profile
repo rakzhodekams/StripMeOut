@@ -8,6 +8,7 @@ include globals.local
 
 noblacklist ${HOME}/.config/akregatorrc
 noblacklist ${HOME}/.local/share/akregator
+noblacklist ${HOME}/.local/share/kxmlgui5/akregator
 
 include disable-common.inc
 include disable-devel.inc
@@ -15,12 +16,15 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 
 mkfile ${HOME}/.config/akregatorrc
 mkdir ${HOME}/.local/share/akregator
+mkdir ${HOME}/.local/share/kxmlgui5/akregator
 whitelist ${HOME}/.config/akregatorrc
 whitelist ${HOME}/.local/share/akregator
 whitelist ${HOME}/.local/share/kssl
+whitelist ${HOME}/.local/share/kxmlgui5/akregator
 include whitelist-common.inc
 include whitelist-var-common.inc
 

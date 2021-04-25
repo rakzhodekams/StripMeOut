@@ -10,17 +10,20 @@ noblacklist ${HOME}/.openinvaders
 
 include disable-common.inc
 include disable-devel.inc
+include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 
 mkdir ${HOME}/.openinvaders
 whitelist ${HOME}/.openinvaders
 include whitelist-common.inc
+include whitelist-var-common.inc
 
+apparmor
 caps.drop all
 net none
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -32,6 +35,9 @@ protocol unix,netlink
 seccomp
 shell none
 
-# private-bin open-invaders
+private-bin open-invaders
 private-dev
 private-tmp
+
+dbus-user none
+dbus-system none

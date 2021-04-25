@@ -21,6 +21,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 
 mkdir ${HOME}/.cache/qBittorrent
 mkdir ${HOME}/.config/qBittorrent
@@ -38,7 +39,6 @@ apparmor
 caps.drop all
 machine-id
 netfilter
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -55,5 +55,9 @@ private-bin python*,qbittorrent
 private-dev
 # private-etc alternatives,ca-certificates,crypto-policies,fonts,pki,resolv.conf,ssl,X11,xdg
 private-tmp
+
+# See https://github.com/netblue30/firejail/issues/3707 for tray-icon
+dbus-user none
+dbus-system none
 
 # memory-deny-write-execute - problems on Arch, see #1690 on GitHub repo

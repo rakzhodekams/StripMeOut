@@ -15,5 +15,13 @@ whitelist /usr/share/eog
 # or put 'ignore private-bin', 'ignore private-etc' and 'ignore private-lib' in your eog.local
 private-bin eog
 
+
+# broken on Debian 10 (buster) running LXDE got the folowing error:
+# Failed to register: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: org.freedesktop.DBus.Error.ServiceUnknown
+#dbus-user filter
+#dbus-user.own org.gnome.eog
+#dbus-user.talk ca.desrt.dconf
+dbus-system none
+
 # Redirect
 include eo-common.profile

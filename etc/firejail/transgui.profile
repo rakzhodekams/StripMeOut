@@ -14,6 +14,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 mkdir ${HOME}/.config/transgui
@@ -28,7 +29,6 @@ caps.drop all
 ipc-namespace
 machine-id
 netfilter
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -48,5 +48,8 @@ private-dev
 private-etc alternatives,fonts
 private-lib libgdk_pixbuf-2.0.so.*,libGeoIP.so*,libgthread-2.0.so.*,libgtk-x11-2.0.so.*,libX11.so.*
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

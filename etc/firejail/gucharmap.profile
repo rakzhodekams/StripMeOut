@@ -12,9 +12,11 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 include whitelist-common.inc
+include whitelist-runuser-common.inc
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
@@ -23,7 +25,6 @@ caps.drop all
 machine-id
 #net none - breaks dbus
 no3d
-#nodbus - breaks state saveing
 nodvd
 nogroups
 nonewprivs
@@ -34,6 +35,7 @@ nou2f
 novideo
 protocol unix
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 
@@ -44,5 +46,9 @@ private-dev
 private-etc alternatives,dbus-1,dconf,fonts,gconf,gtk-2.0,gtk-3.0,ld.so.cache,ld.so.conf,ld.so.conf.d,ld.so.preload,locale,locale.alias,locale.conf,localtime,machine-id,mime.types,pango,X11,xdg
 private-lib
 private-tmp
+
+# breaks state saving
+# dbus-user none
+# dbus-system none
 
 read-only ${HOME}

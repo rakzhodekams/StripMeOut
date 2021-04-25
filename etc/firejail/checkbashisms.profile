@@ -7,6 +7,8 @@ include checkbashisms.local
 # Persistent global definitions
 include globals.local
 
+blacklist ${RUNUSER}/wayland-*
+
 noblacklist ${DOCUMENTS}
 
 # Allow perl (blacklisted by disable-interpreters.inc)
@@ -20,7 +22,6 @@ include disable-passwdmgr.inc
 include disable-programs.inc
 include disable-xdg.inc
 
-whitelist /usr/share/perl5
 include whitelist-usr-share-common.inc
 include whitelist-var-common.inc
 
@@ -30,7 +31,6 @@ ipc-namespace
 machine-id
 net none
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -48,5 +48,8 @@ private-cache
 private-dev
 private-lib libfreebl3.so,perl*
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

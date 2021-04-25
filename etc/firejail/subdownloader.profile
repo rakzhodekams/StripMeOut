@@ -22,25 +22,32 @@ include disable-programs.inc
 include disable-xdg.inc
 
 include whitelist-usr-share-common.inc
+include whitelist-var-common.inc
 
 apparmor
 caps.drop all
+ipc-namespace
+machine-id
 netfilter
-nodbus
+no3d
 nodvd
 nogroups
 nonewprivs
 noroot
+nosound
 notv
 nou2f
-novideo
 protocol unix,inet,inet6
 seccomp
 shell none
+tracelog
 
 private-cache
 private-dev
 private-etc alternatives,fonts
 private-tmp
+
+dbus-user none
+dbus-system none
 
 #memory-deny-write-execute - breaks on Arch (see issue #1803)

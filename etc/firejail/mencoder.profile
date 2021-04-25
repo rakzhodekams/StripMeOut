@@ -7,23 +7,29 @@ include mencoder.local
 # added by included profile
 #include globals.local
 
-include disable-common.inc
-include disable-devel.inc
-include disable-interpreters.inc
-include disable-passwdmgr.inc
-include disable-programs.inc
+# added by included profile
+#include disable-common.inc
+#include disable-devel.inc
+#include disable-interpreters.inc
+#include disable-passwdmgr.inc
+#include disable-programs.inc
 
+ipc-namespace
+machine-id
 net none
 no3d
-nodbus
 nosound
 notv
-nou2f
 protocol unix
-seccomp
-shell none
+tracelog
+x11 none
 
 private-bin mencoder
+
+dbus-user none
+dbus-system none
+
+memory-deny-write-execute
 
 # Redirect
 include mplayer.profile

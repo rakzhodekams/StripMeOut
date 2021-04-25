@@ -14,6 +14,7 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 
 whitelist /usr/share/gpicview
 include whitelist-usr-share-common.inc
@@ -24,7 +25,6 @@ caps.drop all
 ipc-namespace
 machine-id
 net none
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -44,5 +44,8 @@ private-dev
 private-etc alternatives,fonts,group,passwd
 private-lib
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

@@ -8,6 +8,7 @@ include globals.local
 
 noblacklist ${MUSIC}
 noblacklist ${HOME}/.config/kid3rc
+noblacklist ${HOME}/.local/share/kxmlgui5/kid3
 
 include disable-common.inc
 include disable-devel.inc
@@ -22,7 +23,6 @@ include whitelist-var-common.inc
 apparmor
 caps.drop all
 netfilter
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -41,5 +41,8 @@ private-etc alternatives,ca-certificates,crypto-policies,dconf,drirc,fonts,gtk-3
 private-tmp
 private-opt none
 private-srv none
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

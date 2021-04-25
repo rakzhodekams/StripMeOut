@@ -7,40 +7,21 @@ include claws-mail.local
 include globals.local
 
 noblacklist ${HOME}/.claws-mail
-noblacklist ${HOME}/.gnupg
-noblacklist ${HOME}/.signature
 
-include disable-common.inc
-include disable-devel.inc
-include disable-interpreters.inc
-include disable-passwdmgr.inc
-include disable-programs.inc
+mkdir ${HOME}/.claws-mail
+whitelist ${HOME}/.claws-mail
 
-whitelist /usr/share/doc
-whitelist /usr/share/gnupg
-whitelist /usr/share/gnupg2
-include whitelist-usr-share-common.inc
+# If you use python-based plugins you need to uncomment the below (or put them in your claws-mail.local)
+# Allow python (blacklisted by disable-interpreters.inc)
+#include allow-python2.inc
+#include allow-python3.inc
 
-caps.drop all
-netfilter
-no3d
-nodvd
-nogroups
-nonewprivs
-noroot
-nosound
-notv
-nou2f
-novideo
-protocol unix,inet,inet6
-seccomp
-shell none
+whitelist /usr/share/doc/claws-mail
 
-private-cache
-private-dev
-private-tmp
+# if you use the notification plugin you need to uncomment the below (or put them in your claws-mail.local)
+#ignore dbus-user none
+#dbus-user filter
+#dbus-user.talk org.freedesktop.Notifications
 
-# If you want to read local mail stored in /var/mail, add the following to claws-mail.local:
-# noblacklist /var/mail
-# noblacklist /var/spool/mail
-# writable-var
+# Redirect
+include email-common.profile

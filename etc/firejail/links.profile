@@ -1,6 +1,7 @@
 # Firejail profile for links
 # Description: Text WWW browser
 # This file is overwritten after every install/update
+quiet
 # Persistent local customizations
 include links.local
 # Persistent global definitions
@@ -9,6 +10,7 @@ include globals.local
 noblacklist ${HOME}/.links
 
 blacklist /tmp/.X11-unix
+blacklist ${RUNUSER}/wayland-*
 
 include disable-common.inc
 include disable-devel.inc
@@ -23,6 +25,7 @@ include disable-xdg.inc
 mkdir ${HOME}/.links
 whitelist ${HOME}/.links
 whitelist ${DOWNLOADS}
+include whitelist-runuser-common.inc
 include whitelist-var-common.inc
 
 caps.drop all

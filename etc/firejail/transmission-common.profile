@@ -3,6 +3,9 @@
 # This file is overwritten after every install/update
 # Persistent local customizations
 include transmission-common.local
+# Persistent global definitions
+# added by caller profile
+#include globals.local
 
 noblacklist ${HOME}/.cache/transmission
 noblacklist ${HOME}/.config/transmission
@@ -27,7 +30,6 @@ apparmor
 caps.drop all
 machine-id
 netfilter
-nodbus
 nodvd
 nonewprivs
 noroot
@@ -37,11 +39,16 @@ nou2f
 novideo
 protocol unix,inet,inet6
 seccomp
+seccomp.block-secondary
 shell none
 tracelog
 
+private-cache
 private-dev
 private-lib
 private-tmp
+
+dbus-user none
+dbus-system none
 
 memory-deny-write-execute

@@ -11,15 +11,15 @@ include disable-exec.inc
 include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+include disable-shell.inc
 include disable-xdg.inc
 
 include whitelist-var-common.inc
 
+apparmor
 caps.drop all
 net none
-netfilter
 no3d
-nodbus
 nodvd
 nogroups
 nonewprivs
@@ -39,3 +39,5 @@ private-dev
 private-lib
 private-tmp
 
+dbus-user none
+dbus-system none

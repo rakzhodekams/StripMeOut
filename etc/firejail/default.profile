@@ -5,7 +5,7 @@ include default.local
 # Persistent global definitions
 include globals.local
 
-# generic gui profile
+# generic GUI profile
 # depending on your usage, you can enable some of the commands below:
 
 include disable-common.inc
@@ -14,7 +14,14 @@ include disable-common.inc
 # include disable-interpreters.inc
 include disable-passwdmgr.inc
 include disable-programs.inc
+# include disable-shell.inc
+# include disable-write-mnt.inc
 # include disable-xdg.inc
+
+# include whitelist-common.inc
+# include whitelist-runuser-common.inc
+# include whitelist-usr-share-common.inc
+# include whitelist-var-common.inc
 
 # apparmor
 caps.drop all
@@ -23,7 +30,6 @@ caps.drop all
 # net none
 netfilter
 # no3d
-# nodbus
 # nodvd
 # nogroups
 nonewprivs
@@ -42,8 +48,14 @@ seccomp
 # private-bin program
 # private-cache
 # private-dev
-# private-etc alternatives
+# see /usr/share/doc/firejail/profile.template for more common private-etc paths.
+# private-etc alternatives,fonts,machine-id
 # private-lib
+# private-opt none
 # private-tmp
 
+# dbus-user none
+# dbus-system none
+
 # memory-deny-write-execute
+# read-only ${HOME}
