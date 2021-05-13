@@ -1,0 +1,59 @@
+{
+  "explorer.width": 20,
+  "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]",
+  "explorer.buffer.root.template": "[icon & 1] OPEN EDITORS",
+  "explorer.file.root.template": "[icon & 1] PROJECT ([root])",
+  "explorer.file.showHiddenFiles": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.icon.enableVimDevicons": true,
+  "eslint.run": "onSave",
+  "eslint.filetypes": [
+    "json",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "html",
+    "markdown",
+    "Markdown",
+    "py",
+    "python",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact",
+    "json"
+  ],
+  "prettier.printWidth": 80,
+  "prettier.singleQuote": true,
+  "prettier.eslintIntegration": true,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.trailingComma": "es5",
+  "yaml.format.enable": true,
+  "eslint.quiet": false,
+  "diagnostic.errorSign": ">>",
+  "diagnostic.warningSign": "--",
+  "diagnostic.infoSign": "oo",
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 20,
+  "python.linting.pylintArgs": ["--extension-pkg-whitelist=cv2"],
+  "languageserver": {
+    "typescript": {
+      "command": "tsc",
+      "rootPatterns": ["*.ts", "*.js", ".vim/", ".git/"],
+      "filetypes": ["ts"],
+      "disableWorkspaceFolders": true,
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "eslint"
+      }
+    }
+  }
+}
