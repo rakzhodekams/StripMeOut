@@ -1,4 +1,0 @@
-# Configuration file for eselect
-# This file has been automatically generated.
-wine="wine-staging-6.1"
-staging="wine-staging-6.1"

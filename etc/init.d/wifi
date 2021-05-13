@@ -1,4 +1,0 @@
-#!/bin/bash
-modprobe iwlwifi
-chown monkey:monkey /dev/tty* 
-
