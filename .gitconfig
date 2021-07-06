@@ -1,0 +1,14 @@
+[color]
+  ui = true
+
+[core]
+  editor = vim
+  pager = less
+
+[user]
+  name = Rakzhodekams
+  email = i00nsu@cryptolab.net
+  signingKey = 67577495D9EA40CF
+
+[init]
+  templatedir = ~/.git_template
