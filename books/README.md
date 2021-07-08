@@ -1,8 +1,8 @@
-# Online Technical Books 
+# Online Technical Books
 
 Just links to some online books about Linux
 
-## Linux - TLDP 
+## Linux - TLDP
 
 [Laptops and other Portable Devices](https://tldp.org/LDP/Mobile-Guide/html/index.html)
 
@@ -14,4 +14,10 @@ Just links to some online books about Linux
 
 [Linux Administration](https://tldp.org/LDP/lame/LAME/linux-admin-made-easy/index.html)
 
+[The Art of Shell Scripting](https://tldp.org/LDP/abs/html/abs-guide.html)
 
+[Linux System Administration](https://tldp.org/LDP/sag/html/sag.html)
+
+[Pocket Linux](https://tldp.org/LDP/Pocket-Linux-Guide/html/Pocket-Linux-Guide.html)
+
+[Linux Networking Administration](https://tldp.org/LDP/nag2/index.html)
