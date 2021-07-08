@@ -1,0 +1,21 @@
+IMAPStore user@mail.com-remote
+Host mail.autistici.org
+Port 993
+User user@mail.com
+AuthMechs LOGIN 
+SSLType IMAPS 
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore user@mail.com-local
+Subfolders Verbatim
+Path ~/.mutt/mails/
+Inbox ~/.mutt/mails/inbox
+
+Channel user@mail.com
+Master :user@mail.com-remote:
+Slave :user@mail.com-local:
+
+Create Slave 
+SyncState *
+Expunge Both
+
