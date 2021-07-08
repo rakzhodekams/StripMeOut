@@ -1,0 +1,8 @@
+# Creadenciais 
+source $HOME/.mutt/admin/cred
+source $HOME/.mutt/admin/local 
+source $HOME/.mutt/admin/colors
+source $HOME/.mutt/admin/macros
+source $HOME/.mutt/admin/pager
+source $HOME/.mutt/admin/global
+source $HOME/.mutt/admin/mails

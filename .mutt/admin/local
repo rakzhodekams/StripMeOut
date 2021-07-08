@@ -1,0 +1,11 @@
+# Local 
+set folder = "~/.mutt/mails"
+set spoolfile = "+inbox"
+set record = "+sent"
+set trash = "+trash"
+set postponed = "+drafts"
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+set signature = "~/.mutt/signature"
+

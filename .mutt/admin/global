@@ -1,0 +1,19 @@
+# Global
+set keep_flagged = yes
+set mail_check = 10
+set move = no
+set sort = threads 
+set editor = "vim"
+
+# Mutt behavior
+set wait_key = no
+set timeout = 9
+set sleep_time = -1 # fast
+alternative_order text/plain text/html
+auto_view text/html 
+
+set mail_check_stats
+set include_onlyfirst=yes
+set fast_reply=yes
+#set rfc2046_parameters=yes
+set sort_browser=date

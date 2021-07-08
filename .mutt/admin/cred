@@ -1,0 +1,18 @@
+# About me
+set from = "user@mail.com"
+set realname = "username"
+alias me ofmz <user@mail.com>
+
+# Send mail
+set sendmail = "msmtp -a user@mail.com"
+
+# Credenciais
+# SMTP
+set smtp_url = "smtp://user@mail.com@smtp.mail.org:465/"
+# IMAP
+set imap_user = "user@mail.com"
+set imap_check_subscribed = no
+set imap_keepalive = 900
+
+# storage 
+set folder = "~/.mutt/mails/inbox"

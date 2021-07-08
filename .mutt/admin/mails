@@ -1,0 +1,17 @@
+# index options
+set sort = threads 
+set sort_aux = reverse-last-date-received
+#unset collapse_unread
+
+# Composing
+set fcc_attach
+unset mime_forward
+set forward_format = "Fwd: %s"
+set include
+set forward_quote
+
+# Headers to show
+ignore * 
+unignore from: to: cc: date: subject: 
+hdr_order from: to: cc: date: subject: 
+

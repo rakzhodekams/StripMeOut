@@ -1,0 +1,2 @@
+# Keybindings
+macro index o "<shell-escape> mbsync -a ofmz@autistici.org" "run mbsync to sync ofmz@autistici.org"
