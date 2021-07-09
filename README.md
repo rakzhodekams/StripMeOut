@@ -4,16 +4,16 @@
 
 - If(**Gentoo**)
 
-[HOWTO INSTALL GENTOO](./docs/gentoo/README.md)
+[HOWTO INSTALL GENTOO](./docs/distros/gentoo/README.md)
 
 - else If(**Security Paranoid**)
 
-[FORMAT DISK with ZEROS](./docs/gentoo/FORMAT.md)
+[FORMAT DISK with ZEROS](./docs/distros/gentoo/FORMAT.md)
 
-[CRYPT DISK with LUKS and LVM](./docs/gentoo/CRYPT.md)
+[CRYPT DISK with LUKS and LVM](./docs/distros/gentoo/CRYPT.md)
 
 - else If(**Slackware**)
 
-[USEFUL TOOLS](./docs/slackware/tools.md)
+[USEFUL TOOLS](./docs/distros/slackware/tools.md)
 
 - else(**Debian**)
