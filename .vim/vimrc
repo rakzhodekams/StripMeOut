@@ -101,5 +101,27 @@ nnoremap <silent> <C-t> :NERDTreeToggle<CR>
 " Disable auto-comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" Configure NERDCommenter
+vmap <C-c> <plug>NERDCommenterToggle<CR>
+nmap <C-c> <plug>NERDCommenterToggle<CR>
 
+" Auto complete when coding using COC plugins
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>": 
+  \ <SID>check_back_space() ? "\<TAB>" : 
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col -1] =~# '\s'
+endfunction
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr><cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Templates for HTML CSS and JS 
+" This Templates may change: project dependencies
+nnoremap ,html :-1read $HOME/.vim/dev/html/template.html<CR>
+nnoremap ,css  :-1read $HOME/.vim/dev/css/template.css<CR>
+nnoremap ,js   :-1read $HOME/.vim/dev/js/template.js<CR>
 
