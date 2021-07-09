@@ -1,4 +1,4 @@
-# Linux Box 
+# Linux Box
 
 **Note**: Documentation of this repository may be in Portuguese. Some of them are just notes to help me
 
@@ -14,8 +14,6 @@
 
 - else If(**Slackware**)
 
-[USEFUL TOOLS](./docs/slackware/tools.md )
+[USEFUL TOOLS](./docs/slackware/tools.md)
 
 - else(**Debian**)
-
-
