@@ -41,7 +41,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1:Term", "2:Web", "3:Code", "4:Video", "5:Gimp", "6:Vbox", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -49,7 +49,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	*/
    //class    instance      title       	 tags mask    isfloating   isterminal  noswallow  monitor 
- { "Firefox",     NULL,       NULL,       	   SPTAG(2),        0,           0,         0,        -1 },
+ { "qutebrowser",     NULL,       NULL,       	   SPTAG(2),        0,           0,         0,        -1 },
   { TERMCLASS,  NULL,       NULL,       	    0,            0,           1,         0,        -1 },
   { NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
   { NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
@@ -159,10 +159,10 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	{ MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") },
-	{ MODKEY,			XK_w,		spawn,		SHCMD("firefox") },
+	{ MODKEY,			XK_w,		spawn,		SHCMD(TERMINAL " -e elinks duckduckgo.com ") },
 	//{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD(TERMINAL " -e sudo nmtui") },
   { MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e vifm" ) },
-	//{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
+  { MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
   { MODKEY,			XK_r,		spawn,		SHCMD(TERMINAL " -e htop") },
   //{ MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD(TERMINAL " -e htop") },
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
@@ -231,9 +231,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_Page_Up,	shifttag,	{ .i = -1 } },
 	{ MODKEY,			XK_Page_Down,	shiftview,	{ .i = +1 } },
 	{ MODKEY|ShiftMask,		XK_Page_Down,	shifttag,	{ .i = +1 } },
-	//{ MODKEY,			XK_Insert,	spawn,		SHCMD("xdotool type $(grep -v '^#' ~/.local/share/larbs/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
-
-	//{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },
 	//{ MODKEY,			XK_F2,		spawn,		SHCMD("tutorialvids") },
 	//{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
 	//{ MODKEY,			XK_F4,		spawn,		SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof dwmblocks)") },
