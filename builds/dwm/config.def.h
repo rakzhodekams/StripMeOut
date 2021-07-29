@@ -1,42 +1,25 @@
-#include "gaplessgrid.c"
+/* See LICENSE file for copyright and license details. */
 
 /* appearance */
-#define NUMCOLORS 8
-static const char colors[NUMCOLORS][MAXCOLORS][9] = {
-    // border     fg         bg
-    { "#ababab", "#7d7d7d", "#020202" },  // 01 - normal
-    { "#FF0000", "#20b2e7", "#020202" },  // 02 - selected
-    { "#B3354C", "#B3354C", "#020202" },  // 03 - urgent
-    { "#FFA500", "#FFA500", "#020202" },  // 14 - orange
-    { "#20b2e7", "#20b2e7", "#020202" },  // 0F - White
-    { "#608040", "#608040", "#020202" },  // 06 - green
-    { "#B1D354", "#B1D354", "#020202" },  // 0F - light green
-    { "#55b521", "#55b521", "#020202" },  // 0F - strong green
-};
-
 static const char *fonts[] = {
-    "ohsnap.icons-medium-r-normal-*-14-*-*-*-*-*-*-*", "UbuntoMono Nerd Font:size=14:weigth=bold:antialias=true:autohint:true"
+    "Sans:size=10.5",
+    "VL Gothic:size=10.5",
+    "WenQuanYi Micro Hei:size=10.5",
 };
-
-static const char dmenufont[] = "-*-ohsnap.icons-medium-r-*-*-14-*-*-*-*-*-*-*";
-
-//static const char normbordercolor[] = colors[0][0];
-//static const char normbgcolor[]     = colors[0][2];
-//static const char normfgcolor[]     = colors[0][1];
-//static const char selbordercolor[]  = colors[1][0];
-//static const char selbgcolor[]      = colors[1][2];
-//static const char selfgcolor[]      = colors[1][1];
+static const char dmenufont[] = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
+static const char normbordercolor[] = "#444444";
+static const char normbgcolor[]     = "#222222";
+static const char normfgcolor[]     = "#bbbbbb";
+static const char selbordercolor[]  = "#005577";
+static const char selbgcolor[]      = "#005577";
+static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappx     = 6;
-static const unsigned int systraypunning = 0;
-static const unsigned int systrayspacing = 2;
-static const unsigned int showsystray = 1;
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { ">_", " ", " ", " ", " ", " ", " " };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -44,8 +27,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       4,            True,        -1 },
-	{ "Surf",  NULL,       NULL,       2,       False,       -1 },
+	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
 };
 
 /* layout(s) */
@@ -58,12 +41,10 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-  { "TTT",      htile },
-  { "###",      gaplessgrid },
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -75,36 +56,26 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", colors[0][2], "-nf", colors[0][1], "-sb", colors[1][2], "-sf", colors[1][1], NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_u,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,                       XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_x,      killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-  { MODKEY,                       XK_v,      setlayout,      {.v = &layouts[3]} },
-  { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[4] } },
-	{ MODKEY,                       XK_m,      spawn,          SHCMD("st -e mutt") },
-	{ MODKEY,                       XK_c,      spawn,          SHCMD("st -e calcurse") },
-	{ MODKEY,                       XK_r,      spawn,          SHCMD("st -e htop") },
-	{ MODKEY,                       XK_b,      spawn,          SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-	{ MODKEY,                       XK_s,      spawn,          SHCMD("scrot -s") },
-	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("surf -g -i -n -t github.com/search ") },
-	{ MODKEY,                       XK_e,      spawn,          SHCMD("st -e vifm") },
-	{ MODKEY|ShiftMask,                       XK_k,      spawn,          SHCMD("st -e kpcli --kdb ~/docs/i00nsu.kdbx") },
-	{ MODKEY,                       XK_w,      spawn,          SHCMD("st -e w3m duckduckgo.com") },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
